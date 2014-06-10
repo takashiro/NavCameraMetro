@@ -60,7 +60,7 @@
             </Hub.Header>
             <HubSection Width="780" Margin="0,0,80,0">
                 <HubSection.Background>
-                    <ImageBrush ImageSource="Assets/MediumGray.png" Stretch="UniformToFill" />
+                    <ImageBrush ImageSource="Assets/fp.jpg" Stretch="UniformToFill" />
                 </HubSection.Background>
             </HubSection>
             <HubSection Width="500" x:Uid="Section1Header" Header="Section 1">
