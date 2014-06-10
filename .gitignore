@@ -1,0 +1,10 @@
+﻿*.pch
+*.obj
+*.sdf
+*.opensdf
+*.suo
+Debug/
+Release/
+*.vcxproj.user
+Generated Files/
+ipch/
