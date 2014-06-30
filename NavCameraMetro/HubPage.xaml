@@ -29,6 +29,15 @@
             </Grid>
         </DataTemplate>
     </Page.Resources>
+    <Page.TopAppBar>
+        <AppBar>
+            <StackPanel ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Width="1366" Orientation="Horizontal" >
+                <AppBarButton Icon="Accept" Label="MAIN"/>
+                <AppBarButton Icon="Accept" Label="NAVIGATOR"/>
+                <AppBarButton Icon="Accept" Label="ACTIVITY"/>
+            </StackPanel>
+        </AppBar>
+    </Page.TopAppBar>
 
     <!--
     This grid acts as a root panel for the page.
