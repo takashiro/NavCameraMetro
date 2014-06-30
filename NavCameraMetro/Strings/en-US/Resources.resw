@@ -226,28 +226,13 @@
     <value>Lorem ipsum dolor sit amet, consectetuer ising elit, sed diam nonummy nibh uismod tincidunt ut laoreet suscipit lobortis ni ut wisi quipexerci quis consequat minim veniam, quis nostrud exerci tation ullam corper. Lorem ipsum dolor sit amet, consectetuer ising elit, sed diam nonummy nibh uismod tincidunt ut laoreet suscipit lobortis ni ut wisi quipexerci quis consequat minim veniam, quis nostrud exerci tation ullam corper. Lorem ipsum dolor sit amet, consectetuer ising elit, sed diam nonummy nibh uismod tincidunt ut laoreet suscipit lobortis ni ut wisi quipexerci quis consequat minim veniam, quis nostrud exerci tation ullam corper. Lorem ipsum dolor sit amet, consectetuer ising elit, sed diam nonummy nibh uismod tincidunt ut laoreet suscipit lobortis ni ut wisi quipexerci quis consequat minim veniam, quis nostrud exerci tation ullam corper. Lorem ipsum dolor sit amet, consectetuer ising elit, sed diam nonummy nibh uismod tincidunt ut laoreet suscipit lobortis ni ut wisi quipexerci quis consequat minim veniam, quis nostrud exerci tation ullam corper. Lorem ipsum dolor sit amet, consectetuer ising elit, sed diam nonummy nibh uismod tincidunt ut laoreet suscipit lobortis ni ut wisi quipexerci quis consequat minim veniam, quis nostrud exerci tation ullam corper.</value>
     <comment>"Section1DescriptionText" duplicated three times.</comment>
   </data>
-  <data name="Section1DescriptionText.Text" xml:space="preserve">
-    <value>Lorem ipsum dolor sit amet, consectetuer ising elit, sed diam nonummy nibh uismod tincidunt ut laoreet suscipit lobortis ni ut wisi quipexerci quis consequat minim veniam, quis nostrud exerci tation ullam corper. Lorem ipsum dolor sit amet, consectetuer ising elit, sed diam nonummy nibh uismod tincidunt ut laoreet suscipit lobortis ni ut wisi quipexerci quis consequat minim veniam, quis nostrud exerci tation ullam corper.</value>
+  <data name="AncientRuinsHeader.Header" xml:space="preserve">
+    <value>Ancient Ruins</value>
   </data>
-  <data name="Section1Header.Header" xml:space="preserve">
-    <value>Section 1</value>
+  <data name="CarveHeader.Header" xml:space="preserve">
+    <value>Carve</value>
   </data>
-  <data name="Section1Subtitle.Text" xml:space="preserve">
-    <value>Lorem ipsum dolor sit nonumy sed consectetuer ising elit, sed diam</value>
-  </data>
-  <data name="Section2Header.Header" xml:space="preserve">
-    <value>Section 2</value>
-  </data>
-  <data name="Section3Header.Header" xml:space="preserve">
-    <value>Section 3</value>
-  </data>
-  <data name="Section3Subtitle.Text" xml:space="preserve">
-    <value>Section subtitle</value>
-  </data>
-  <data name="Section4Header.Header" xml:space="preserve">
-    <value>Section 4</value>
-  </data>
-  <data name="Section2UnderTitle.Text" xml:space="preserve">
-    <value>Quisque in porta lorem dolor amet sed consectetuer ising elit, sed diam non my nibh uis mod wisi quip.</value>
+  <data name="HeritageHeader.Header" xml:space="preserve">
+    <value>Heritage</value>
   </data>
 </root>
