@@ -131,6 +131,12 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ActivityPage.xaml.h">
+      <DependentUpon>ActivityPage.xaml</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="NavigatorPage.xaml.h">
+      <DependentUpon>NavigatorPage.xaml</DependentUpon>
+    </ClInclude>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Common\NavigationHelper.h" />
     <ClInclude Include="Common\RelayCommand.h" />
@@ -153,7 +159,13 @@
     <ApplicationDefinition Include="App.xaml">
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ActivityPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="HubPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NavigatorPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Include="SectionPage.xaml">
@@ -187,6 +199,9 @@
     <Image Include="Assets\DarkGray.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ActivityPage.xaml.cpp">
+      <DependentUpon>ActivityPage.xaml</DependentUpon>
+    </ClCompile>
     <ClCompile Include="App.xaml.cpp">
       <DependentUpon>App.xaml</DependentUpon>
     </ClCompile>
@@ -195,6 +210,9 @@
     <ClCompile Include="Common\SuspensionManager.cpp" />
     <ClCompile Include="HubPage.xaml.cpp">
       <DependentUpon>HubPage.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="NavigatorPage.xaml.cpp">
+      <DependentUpon>NavigatorPage.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="SectionPage.xaml.cpp">
       <DependentUpon>SectionPage.xaml</DependentUpon>

@@ -1,21 +1,23 @@
 ﻿//
-// HubPage.xaml.h
-// Declaration of the HubPage class
+// NavigatorPage.xaml.h
+// Declaration of the NavigatorPage class
 //
 
 #pragma once
 
-#include "HubPage.g.h"
+#include "NavigatorPage.g.h"
+#include "Common\NavigationHelper.h"
 
 namespace NavCameraMetro
 {
 	/// <summary>
 	/// A page that displays a grouped collection of items.
 	/// </summary>
-	public ref class HubPage sealed
+	[Windows::Foundation::Metadata::WebHostHidden]
+	public ref class NavigatorPage sealed
 	{
 	public:
-		HubPage();
+		NavigatorPage();
 
 		/// <summary>
 		/// This can be changed to a strongly typed view model.
@@ -24,6 +26,7 @@ namespace NavCameraMetro
 		{
 			Windows::Foundation::Collections::IObservableMap<Platform::String^, Platform::Object^>^  get();
 		}
+
 		/// <summary>
 		/// NavigationHelper is used on each page to aid in navigation and 
 		/// process lifetime management
@@ -39,10 +42,7 @@ namespace NavCameraMetro
 
 	private:
 		void LoadState(Platform::Object^ sender, Common::LoadStateEventArgs^ e);
-		void Hub_SectionHeaderClick(Platform::Object^ sender, Windows::UI::Xaml::Controls::HubSectionHeaderClickEventArgs^ e);
-		void ItemView_ItemClick(Platform::Object^ sender, Windows::UI::Xaml::Controls::ItemClickEventArgs^ e);
-		void AppBar_ButtonClick(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
-
+		
 		static Windows::UI::Xaml::DependencyProperty^ _defaultViewModelProperty;
 		static Windows::UI::Xaml::DependencyProperty^ _navigationHelperProperty;
 	};

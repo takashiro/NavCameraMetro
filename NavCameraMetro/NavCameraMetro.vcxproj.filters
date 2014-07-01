@@ -101,6 +101,8 @@
     <Page Include="HubPage.xaml" />
     <Page Include="SectionPage.xaml" />
     <Page Include="ItemPage.xaml" />
+    <Page Include="ActivityPage.xaml" />
+    <Page Include="NavigatorPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\fp.jpg">

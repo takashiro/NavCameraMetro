@@ -7,6 +7,8 @@
 #include "HubPage.xaml.h"
 #include "SectionPage.xaml.h"
 #include "ItemPage.xaml.h"
+#include "ActivityPage.xaml.h"
+#include "NavigatorPage.xaml.h"
 
 using namespace NavCameraMetro;
 
@@ -132,3 +134,16 @@ void HubPage::ItemView_ItemClick(Object^ sender, ItemClickEventArgs^ e)
 	auto itemId = safe_cast<Data::SampleDataItem^>(e->ClickedItem)->UniqueId;
 	Frame->Navigate(TypeName(ItemPage::typeid), itemId);
 }
+
+void HubPage::AppBar_ButtonClick(Object^ sender, RoutedEventArgs^ e)
+{
+	AppBarButton ^button = safe_cast<AppBarButton ^>(sender);
+	if (button->Name == "activityButton")
+	{
+		Frame->Navigate(TypeName(ActivityPage::typeid));
+	}
+	else if (button->Name == "navigatorButton") {
+		Frame->Navigate(TypeName(NavigatorPage::typeid));
+	}
+}
+
