@@ -18,7 +18,7 @@
     -->
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
         DataContext="{Binding Item}"
-        d:DataContext="{Binding Groups[0].Items[0], Source={d:DesignData Source=/DataModel/SampleData.json, Type=data:SampleDataSource}}">
+        d:DataContext="{Binding Groups[6].Items[0], Source={d:DesignData Source=/DataModel/SampleData.json, Type=data:SampleDataSource}}">
         <Grid.ChildrenTransitions>
             <TransitionCollection>
                 <EntranceThemeTransition/>
@@ -29,11 +29,19 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!--
-            TODO: Content should be placed within the following grid 
-                  to show details for the current item
-        -->
-        <Grid Grid.Row="1" x:Name="contentRegion"/>
+        <!-- Back button and page title -->
+        <ScrollViewer Grid.Row="1" x:Name="contentRegion">
+            <StackPanel Orientation="Horizontal">
+                <HubSection>
+                        <DataTemplate>
+                            <Grid>
+                                <Image HorizontalAlignment="Left" Source="{Binding ImagePath}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </HubSection>
+                <TextBlock TextWrapping="Wrap" Text="{Binding Description}" FontSize="32" Width="400"/>
+            </StackPanel>
+        </ScrollViewer>
 
         <!-- Back button and page title -->
         <Grid>
