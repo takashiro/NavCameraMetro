@@ -32,7 +32,7 @@
     <Page.TopAppBar>
         <AppBar>
             <StackPanel ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Width="1366" Orientation="Horizontal" >
-                <AppBarButton Label="MAIN" Icon="Home"/>
+                <AppBarButton Icon="Home" Label="HOME" IsEnabled="False"/>
                 <AppBarButton Icon="World" Label="NAVIGATOR"/>
                 <AppBarButton Icon="Calendar" Label="ACTIVITY"/>
             </StackPanel>
