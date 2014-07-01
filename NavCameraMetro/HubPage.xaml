@@ -119,7 +119,7 @@
                     </StackPanel>
                 </DataTemplate>
             </HubSection>
-            <HubSection IsHeaderInteractive="True" DataContext="{Binding Section3Items}" d:DataContext="{Binding Groups[3], Source={d:DesignData Source=/DataModel/SampleData.json, Type=data:SampleDataSource}}"
+            <HubSection IsHeaderInteractive="True" DataContext="{Binding SectionRuinItems}" d:DataContext="{Binding Groups[3], Source={d:DesignData Source=/DataModel/SampleData.json, Type=data:SampleDataSource}}"
             	x:Uid="AncientRuinsHeader" Header="Ancient Ruins" Padding="40,40,40,32">
                 <DataTemplate>
                     <GridView

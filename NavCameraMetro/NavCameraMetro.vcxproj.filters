@@ -71,6 +71,9 @@
     <Filter Include="Assets\carve">
       <UniqueIdentifier>{0c33cb13-3a5e-4b4d-90bf-f79ed34f3f9d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Assets\ruin">
+      <UniqueIdentifier>{4f9421fc-7165-4672-94c5-7d0af7b8326b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="Strings\en-US\Resources.resw">
@@ -86,6 +89,8 @@
     <ClCompile Include="SectionPage.xaml.cpp" />
     <ClCompile Include="ItemPage.xaml.cpp" />
     <ClCompile Include="pch.cpp" />
+    <ClCompile Include="ActivityPage.xaml.cpp" />
+    <ClCompile Include="NavigatorPage.xaml.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -93,6 +98,8 @@
     <ClInclude Include="HubPage.xaml.h" />
     <ClInclude Include="SectionPage.xaml.h" />
     <ClInclude Include="ItemPage.xaml.h" />
+    <ClInclude Include="ActivityPage.xaml.h" />
+    <ClInclude Include="NavigatorPage.xaml.h" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest" />
@@ -122,6 +129,15 @@
     </Image>
     <Image Include="Assets\carve\4.jpg">
       <Filter>Assets\carve</Filter>
+    </Image>
+    <Image Include="Assets\ruin\egypt.jpg">
+      <Filter>Assets\ruin</Filter>
+    </Image>
+    <Image Include="Assets\ruin\fuzihole.jpg">
+      <Filter>Assets\ruin</Filter>
+    </Image>
+    <Image Include="Assets\ruin\majiabang.jpg">
+      <Filter>Assets\ruin</Filter>
     </Image>
   </ItemGroup>
 </Project>

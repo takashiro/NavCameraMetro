@@ -195,6 +195,9 @@
     <Image Include="Assets\carve\4.jpg" />
     <Image Include="Assets\fp.jpg" />
     <Image Include="Assets\Logo.scale-100.png" />
+    <Image Include="Assets\ruin\egypt.jpg" />
+    <Image Include="Assets\ruin\fuzihole.jpg" />
+    <Image Include="Assets\ruin\majiabang.jpg" />
     <Image Include="Assets\SmallLogo.scale-100.png" />
     <Image Include="Assets\StoreLogo.scale-100.png" />
     <Image Include="Assets\SplashScreen.scale-100.png" />

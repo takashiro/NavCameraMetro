@@ -97,15 +97,15 @@ void HubPage::LoadState(Object^ sender, Common::LoadStateEventArgs^ e)
 	(void) e;	// Unused parameter
 
 	Data::SampleDataSource::GetGroup("Group-Carve")
-		.then([this](Data::SampleDataGroup^ Section3Items)
+		.then([this](Data::SampleDataGroup^ SectionCarveItems)
 	{
-		DefaultViewModel->Insert("SectionCarveItems", Section3Items);
+		DefaultViewModel->Insert("SectionCarveItems", SectionCarveItems);
 	}, task_continuation_context::use_current());
 
-	Data::SampleDataSource::GetGroup("Group-4")
-		.then([this](Data::SampleDataGroup^ Section3Items)
+	Data::SampleDataSource::GetGroup("Group-Ruin")
+		.then([this](Data::SampleDataGroup^ SectionRuinItems)
 	{
-		DefaultViewModel->Insert("Section3Items", Section3Items);
+		DefaultViewModel->Insert("SectionRuinItems", SectionRuinItems);
 	}, task_continuation_context::use_current());
 }
 
