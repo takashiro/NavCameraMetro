@@ -10,6 +10,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.TopAppBar>
+        <AppBar>
+            <StackPanel Orientation="Horizontal">
+                <AppBarButton Icon="Bookmarks" Label="INTRODUCTION" IsEnabled="False" />
+                <AppBarButton Icon="VideoChat" Label="VIDEO" />
+                <AppBarButton Icon="Street" Label="3D MODEL" />
+            </StackPanel>
+        </AppBar>
+    </Page.TopAppBar>
 
     <!--
         This grid acts as a root panel for the page that defines two rows:
@@ -33,12 +42,12 @@
         <ScrollViewer Grid.Row="1" x:Name="contentRegion">
             <StackPanel Orientation="Horizontal">
                 <HubSection>
-                        <DataTemplate>
-                            <Grid>
-                                <Image HorizontalAlignment="Left" Source="{Binding ImagePath}"/>
-                            </Grid>
-                        </DataTemplate>
-                    </HubSection>
+                    <DataTemplate>
+                        <Grid>
+                            <Image HorizontalAlignment="Left" Source="{Binding ImagePath}"/>
+                        </Grid>
+                    </DataTemplate>
+                </HubSection>
                 <TextBlock TextWrapping="Wrap" Text="{Binding Description}" FontSize="32" Width="400"/>
             </StackPanel>
         </ScrollViewer>
