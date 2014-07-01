@@ -74,6 +74,9 @@
     <Filter Include="Assets\ruin">
       <UniqueIdentifier>{4f9421fc-7165-4672-94c5-7d0af7b8326b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Assets\heritage">
+      <UniqueIdentifier>{1575580b-edae-47a8-aae4-01afee353b79}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="Strings\en-US\Resources.resw">
@@ -138,6 +141,18 @@
     </Image>
     <Image Include="Assets\ruin\majiabang.jpg">
       <Filter>Assets\ruin</Filter>
+    </Image>
+    <Image Include="Assets\heritage\budda.jpg">
+      <Filter>Assets\heritage</Filter>
+    </Image>
+    <Image Include="Assets\heritage\lyingbudda.jpg">
+      <Filter>Assets\heritage</Filter>
+    </Image>
+    <Image Include="Assets\heritage\painting.jpg">
+      <Filter>Assets\heritage</Filter>
+    </Image>
+    <Image Include="Assets\heritage\tower.jpg">
+      <Filter>Assets\heritage</Filter>
     </Image>
   </ItemGroup>
 </Project>

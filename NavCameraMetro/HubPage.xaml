@@ -107,10 +107,10 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
-                            <Image Source="Assets/MediumGray.png" Grid.ColumnSpan="5" Margin="0,0,0,10" Stretch="Fill" />
-                            <Image Source="Assets/MediumGray.png" Grid.Row="1" Stretch="Fill"/>
-                            <Image Source="Assets/MediumGray.png" Grid.Row="1" Grid.Column="2" Stretch="Fill"/>
-                            <Image Source="Assets/MediumGray.png" Grid.Row="1" Grid.Column="4" Stretch="Fill"/>
+                            <Image Source="Assets/heritage/lyingbudda.jpg" Grid.ColumnSpan="5" Margin="0,0,0,10" Stretch="Fill" />
+                            <Image Source="Assets/heritage/tower.jpg" Grid.Row="1" Stretch="Fill"/>
+                            <Image Source="Assets/heritage/painting.jpg" Grid.Row="1" Grid.Column="2" Stretch="Fill"/>
+                            <Image Source="Assets/heritage/budda.jpg" Grid.Row="1" Grid.Column="4" Stretch="Fill"/>
                             <TextBlock Style="{StaticResource TitleTextBlockStyle}" Grid.Row="2" Grid.ColumnSpan="5"  Margin="0,15,0,0"
                                        x:Uid="DescriptionHeader" Text="Description text:"/>
                             <TextBlock Style="{StaticResource BodyTextBlockStyle}" Grid.Row="3" Grid.ColumnSpan="5"
