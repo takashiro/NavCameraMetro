@@ -8,7 +8,7 @@
     <Application.Resources>
         <!-- Application-specific resources -->
 
-        <x:String x:Key="AppName">NavCamera</x:String>
+        <x:String x:Key="AppName">The Silk Road</x:String>
 
     </Application.Resources>
 </Application>
