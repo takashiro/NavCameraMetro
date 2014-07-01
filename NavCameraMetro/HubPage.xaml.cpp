@@ -96,7 +96,12 @@ void HubPage::LoadState(Object^ sender, Common::LoadStateEventArgs^ e)
 	(void) sender;	// Unused parameter
 	(void) e;	// Unused parameter
 
-	// TODO: Create an appropriate data model for your problem domain to replace the sample data
+	Data::SampleDataSource::GetGroup("Group-Carve")
+		.then([this](Data::SampleDataGroup^ Section3Items)
+	{
+		DefaultViewModel->Insert("SectionCarveItems", Section3Items);
+	}, task_continuation_context::use_current());
+
 	Data::SampleDataSource::GetGroup("Group-4")
 		.then([this](Data::SampleDataGroup^ Section3Items)
 	{
@@ -112,11 +117,11 @@ void HubPage::LoadState(Object^ sender, Common::LoadStateEventArgs^ e)
 void HubPage::Hub_SectionHeaderClick(Object^ sender, HubSectionHeaderClickEventArgs^ e)
 {
 	HubSection^ section = e->Section;
-	auto group = section->DataContext;
+	auto group = safe_cast<Data::SampleDataGroup^>(section->DataContext);
 
 	// Navigate to the appropriate destination page, configuring the new page
 	// by passing required information as a navigation parameter
-	Frame->Navigate(TypeName(SectionPage::typeid), safe_cast<Data::SampleDataGroup^>(group)->UniqueId);
+	Frame->Navigate(TypeName(SectionPage::typeid), group->UniqueId);
 }
 
 /// <summary>

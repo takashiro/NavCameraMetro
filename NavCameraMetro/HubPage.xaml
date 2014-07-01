@@ -72,7 +72,7 @@
                     <ImageBrush ImageSource="Assets/fp.jpg" Stretch="UniformToFill" />
                 </HubSection.Background>
             </HubSection>
-            <HubSection IsHeaderInteractive="True" DataContext="{Binding Section3Items}" d:DataContext="{Binding Groups[3], Source={d:DesignData Source=/DataModel/SampleData.json, Type=data:SampleDataSource}}"
+            <HubSection IsHeaderInteractive="True" DataContext="{Binding SectionCarveItems}" d:DataContext="{Binding Groups[3], Source={d:DesignData Source=/DataModel/SampleData.json, Type=data:SampleDataSource}}"
                         x:Uid="CarveHeader" Header="Carve" Padding="40,40,40,32">
                 <DataTemplate>
                     <GridView
