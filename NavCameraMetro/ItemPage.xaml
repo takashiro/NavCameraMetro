@@ -58,7 +58,9 @@
                                         Canvas.Left="{Binding Left}"
                                         Opacity="0"
                                         PointerEntered="HotspotButton_PointerEntered"
-                                        PointerExited="HotspotButton_PointerExited"/>
+                                        PointerExited="HotspotButton_PointerExited"
+                                        CommandParameter="{Binding LinkedItemId}"
+                                        Click="HotspotButton_Click"/>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>

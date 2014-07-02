@@ -132,3 +132,10 @@ void NavCameraMetro::ItemPage::HotspotButton_PointerExited(Platform::Object^ sen
 	Button ^button = safe_cast<Button ^>(sender);
 	button->Opacity = 0;
 }
+
+
+void NavCameraMetro::ItemPage::HotspotButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	Button ^button = safe_cast<Button ^>(sender);
+	Frame->Navigate(TypeName(ItemPage::typeid), button->CommandParameter);
+}

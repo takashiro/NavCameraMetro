@@ -31,6 +31,7 @@ namespace NavCameraMetro
 			property int Height { int get(); }
 			property int Top { int get(); }
 			property int Left { int get(); }
+			property Platform::String^ LinkedItemId {Platform::String^ get(); }
 
 			// Implementation of ICustomPropertyProvider provides a string representation for the object to be used as automation name for accessibility
 			virtual Windows::UI::Xaml::Data::ICustomProperty^ GetCustomProperty(Platform::String^ name);
@@ -39,7 +40,7 @@ namespace NavCameraMetro
 			property Windows::UI::Xaml::Interop::TypeName Type { virtual Windows::UI::Xaml::Interop::TypeName get(); }
 
 		internal:
-			DefaultDataHotspot(Platform::String^ label, int width, int height, int top, int left);
+			DefaultDataHotspot(Platform::String^ label, int width, int height, int top, int left, Platform::String ^linkedItemId);
 
 		private:
 			Platform::String^ _label;
@@ -47,6 +48,7 @@ namespace NavCameraMetro
 			int _height;
 			int _top;
 			int _left;
+			Platform::String^ _linkedItemId;
 		};
 
 		/// <summary>

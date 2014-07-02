@@ -24,12 +24,13 @@ using namespace Windows::Data::Json;
 // DefaultDataItem
 //
 
-DefaultDataHotspot::DefaultDataHotspot(String^ label, int width, int height, int top, int left) :
+DefaultDataHotspot::DefaultDataHotspot(String^ label, int width, int height, int top, int left, String ^linkedItemId) :
 	_label(label),
 	_width(width),
 	_height(height),
 	_top(top),
-	_left(left)
+	_left(left),
+	_linkedItemId(linkedItemId)
 {
 }
 
@@ -56,6 +57,11 @@ int DefaultDataHotspot::Top::get()
 int DefaultDataHotspot::Left::get()
 {
 	return _left;
+}
+
+Platform::String^ DefaultDataHotspot::LinkedItemId::get()
+{
+	return _linkedItemId;
 }
 
 Windows::UI::Xaml::Data::ICustomProperty^ DefaultDataHotspot::GetCustomProperty(Platform::String^ name)
@@ -264,7 +270,8 @@ DefaultDataSource::DefaultDataSource()
 							(int)hotspotObject->GetNamedNumber("Width"),
 							(int)hotspotObject->GetNamedNumber("Height"),
 							(int)hotspotObject->GetNamedNumber("Top"),
-							(int)hotspotObject->GetNamedNumber("Left"));
+							(int)hotspotObject->GetNamedNumber("Left"),
+							(int)hotspotObject->GetNamedString("LinkedItemId"));
 
 						item->Hotspots->Append(hotspot);
 					};
