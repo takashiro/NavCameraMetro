@@ -45,7 +45,7 @@
                       Width="700"
                       Margin="10">
                     <Grid.Background>
-                        <ImageBrush Stretch="Fill" ImageSource="{Binding ImagePath}"/>
+                        <ImageBrush Stretch="UniformToFill" ImageSource="{Binding ImagePath}"/>
                     </Grid.Background>
                     <Button Content="Asshole" HorizontalAlignment="Left" Margin="537,157,0,0" VerticalAlignment="Top" Height="73" Width="116" Opacity="0"/>
                     <Button Content="Camel" HorizontalAlignment="Left" Margin="147,197,0,0" VerticalAlignment="Top" Height="176" Width="191" Opacity="0" PointerEntered="HotspotButton_PointerEntered" PointerExited="HotspotButton_PointerExited"/>
