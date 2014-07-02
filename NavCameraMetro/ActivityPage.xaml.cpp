@@ -91,8 +91,8 @@ Common::NavigationHelper^ ActivityPage::NavigationHelper::get()
 /// session.  This will be null the first time a page is visited.</param>
 void ActivityPage::LoadState(Platform::Object^ sender, Common::LoadStateEventArgs^ e)
 {
-	Data::SampleDataSource::GetGroup("Group-Activity")
-		.then([this](Data::SampleDataGroup^ group)
+	Data::DefaultDataSource::GetGroup("Group-Activity")
+		.then([this](Data::DefaultDataGroup^ group)
 	{
 		DefaultViewModel->Insert("Items", group->Items);
 	}, task_continuation_context::use_current());
@@ -244,11 +244,11 @@ Platform::String^ ActivityPage::DetermineVisualState()
 
 /// The methods provided in this section are simply used to allow
 /// NavigationHelper to respond to the page's navigation methods.
-/// 
-/// Page specific logic should be placed in event handlers for the  
+///
+/// Page specific logic should be placed in event handlers for the
 /// <see cref="NavigationHelper::LoadState"/>
 /// and <see cref="NavigationHelper::SaveState"/>.
-/// The navigation parameter is available in the LoadState method 
+/// The navigation parameter is available in the LoadState method
 /// in addition to page state preserved during an earlier session.
 
 void ActivityPage::OnNavigatedTo(NavigationEventArgs^ e)

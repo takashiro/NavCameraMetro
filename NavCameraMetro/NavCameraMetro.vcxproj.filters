@@ -59,15 +59,6 @@
     <Image Include="Assets\DarkGray.png">
       <Filter>Assets</Filter>
     </Image>
-    <ClCompile Include="DataModel\SampleDataSource.cpp">
-      <Filter>DataModel</Filter>
-    </ClCompile>
-    <ClInclude Include="DataModel\SampleDataSource.h">
-      <Filter>DataModel</Filter>
-    </ClInclude>
-    <Text Include="DataModel\SampleData.json">
-      <Filter>DataModel</Filter>
-    </Text>
     <Filter Include="Assets\carve">
       <UniqueIdentifier>{0c33cb13-3a5e-4b4d-90bf-f79ed34f3f9d}</UniqueIdentifier>
     </Filter>
@@ -94,6 +85,10 @@
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="ActivityPage.xaml.cpp" />
     <ClCompile Include="NavigatorPage.xaml.cpp" />
+    <ClCompile Include="MediaPage.xaml.cpp" />
+    <ClCompile Include="DataModel\DefaultSource.cpp">
+      <Filter>DataModel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -103,6 +98,10 @@
     <ClInclude Include="ItemPage.xaml.h" />
     <ClInclude Include="ActivityPage.xaml.h" />
     <ClInclude Include="NavigatorPage.xaml.h" />
+    <ClInclude Include="MediaPage.xaml.h" />
+    <ClInclude Include="DataModel\DefaultDataSource.h">
+      <Filter>DataModel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest" />
@@ -155,5 +154,10 @@
     <Image Include="Assets\heritage\tower.jpg">
       <Filter>Assets\heritage</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="DataModel\DefaultData.json">
+      <Filter>DataModel</Filter>
+    </Text>
   </ItemGroup>
 </Project>

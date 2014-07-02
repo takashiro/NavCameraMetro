@@ -1,6 +1,6 @@
 ﻿//
-// SampleDataSource.h
-// Declaration of the SampleDataSource, SampleDataGroup, SampleDataItem, and SampleDataCommon classes
+// DefaultDataSource.h
+// Declaration of the DefaultDataSource, DefaultDataGroup, DefaultDataItem, and SampleDataCommon classes
 //
 
 #pragma once
@@ -9,21 +9,21 @@
 // model.  The property names chosen coincide with data bindings in the standard item templates.
 //
 // Applications may use this model as a starting point and build on it, or discard it entirely and
-// replace it with something appropriate to their needs. If using this model, you might improve app 
-// responsiveness by initiating the data loading task in the code behind for App.xaml when the app 
+// replace it with something appropriate to their needs. If using this model, you might improve app
+// responsiveness by initiating the data loading task in the code behind for App.xaml when the app
 // is first launched.
 
 namespace NavCameraMetro
 {
 	namespace Data
 	{
-		ref class SampleDataGroup; // Resolve circular relationship between SampleDataItem and SampleDataGroup
+		ref class DefaultDataGroup; // Resolve circular relationship between DefaultDataItem and DefaultDataGroup
 
 		/// <summary>
 		/// Generic item data model.
 		/// </summary>
 		[Windows::UI::Xaml::Data::Bindable]
-		public ref class SampleDataItem sealed : public Windows::UI::Xaml::Data::ICustomPropertyProvider
+		public ref class DefaultDataItem sealed : public Windows::UI::Xaml::Data::ICustomPropertyProvider
 		{
 		public:
 			property Platform::String^ UniqueId { Platform::String^ get(); }
@@ -40,7 +40,7 @@ namespace NavCameraMetro
 			property Windows::UI::Xaml::Interop::TypeName Type { virtual Windows::UI::Xaml::Interop::TypeName get(); }
 
 		internal:
-			SampleDataItem(Platform::String^ uniqueId, Platform::String^ title, Platform::String^ subtitle, Platform::String^ imagePath,
+			DefaultDataItem(Platform::String^ uniqueId, Platform::String^ title, Platform::String^ subtitle, Platform::String^ imagePath,
 				Platform::String^ description, Platform::String^ content);
 
 		private:
@@ -56,16 +56,16 @@ namespace NavCameraMetro
 		/// Generic group data model.
 		/// </summary>
 		[Windows::UI::Xaml::Data::Bindable]
-		public ref class SampleDataGroup sealed : public Windows::UI::Xaml::Data::ICustomPropertyProvider
+		public ref class DefaultDataGroup sealed : public Windows::UI::Xaml::Data::ICustomPropertyProvider
 		{
 		public:
 			property Platform::String^ UniqueId { Platform::String^ get(); }
 			property Platform::String^ Title { Platform::String^ get(); }
 			property Platform::String^ Subtitle { Platform::String^ get(); }
 			property Platform::String^ Description { Platform::String^ get(); }
-			property Windows::Foundation::Collections::IObservableVector<SampleDataItem^>^ Items
+			property Windows::Foundation::Collections::IObservableVector<DefaultDataItem^>^ Items
 			{
-				Windows::Foundation::Collections::IObservableVector<SampleDataItem^>^ get();
+				Windows::Foundation::Collections::IObservableVector<DefaultDataItem^>^ get();
 			}
 			property Platform::String^ ImagePath { Platform::String^ get(); }
 
@@ -76,7 +76,7 @@ namespace NavCameraMetro
 			property Windows::UI::Xaml::Interop::TypeName Type { virtual Windows::UI::Xaml::Interop::TypeName get(); }
 
 		internal:
-			SampleDataGroup(Platform::String^ uniqueId, Platform::String^ title, Platform::String^ subtitle, Platform::String^ imagePath,
+			DefaultDataGroup(Platform::String^ uniqueId, Platform::String^ title, Platform::String^ subtitle, Platform::String^ imagePath,
 				Platform::String^ description);
 
 		private:
@@ -85,36 +85,36 @@ namespace NavCameraMetro
 			Platform::String^ _subtitle;
 			Platform::String^ _imagePath;
 			Platform::String^ _description;
-			Platform::Collections::Vector<SampleDataItem^>^ _items;
+			Platform::Collections::Vector<DefaultDataItem^>^ _items;
 		};
 
 		/// <summary>
 		/// Creates a collection of groups and items with content read from a static json file.
-		/// 
-		/// SampleDataSource initializes with data read from a static json file included in the 
+		///
+		/// DefaultDataSource initializes with data read from a static json file included in the
 		/// project.  This provides sample data at both design-time and run-time.
 		/// </summary>
 		[Windows::UI::Xaml::Data::Bindable]
-		public ref class SampleDataSource sealed
+		public ref class DefaultDataSource sealed
 		{
 		public:
-			property Windows::Foundation::Collections::IObservableVector<SampleDataGroup^>^ Groups
+			property Windows::Foundation::Collections::IObservableVector<DefaultDataGroup^>^ Groups
 			{
-				Windows::Foundation::Collections::IObservableVector<SampleDataGroup^>^ get();
+				Windows::Foundation::Collections::IObservableVector<DefaultDataGroup^>^ get();
 			}
 
 		internal:
-			SampleDataSource();
-			static concurrency::task<Windows::Foundation::Collections::IIterable<SampleDataGroup^>^> GetGroups();
-			static concurrency::task<SampleDataGroup^> GetGroup(Platform::String^ uniqueId);
-			static concurrency::task<SampleDataItem^> GetItem(Platform::String^ uniqueId);
+			DefaultDataSource();
+			static concurrency::task<Windows::Foundation::Collections::IIterable<DefaultDataGroup^>^> GetGroups();
+			static concurrency::task<DefaultDataGroup^> GetGroup(Platform::String^ uniqueId);
+			static concurrency::task<DefaultDataItem^> GetItem(Platform::String^ uniqueId);
 
 		private:
 			concurrency::task_completion_event<void> _loadCompletionEvent;
-			Platform::Collections::Vector<SampleDataGroup^>^ _groups;
+			Platform::Collections::Vector<DefaultDataGroup^>^ _groups;
 			static concurrency::task<void> Init();
 
-			static SampleDataSource^ _sampleDataSource;
+			static DefaultDataSource^ _sampleDataSource;
 		};
 	}
 }

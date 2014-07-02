@@ -64,11 +64,11 @@ Common::NavigationHelper^ HubPage::NavigationHelper::get()
 
 /// The methods provided in this section are simply used to allow
 /// NavigationHelper to respond to the page's navigation methods.
-/// 
-/// Page specific logic should be placed in event handlers for the  
+///
+/// Page specific logic should be placed in event handlers for the
 /// <see cref="NavigationHelper::LoadState"/>
 /// and <see cref="NavigationHelper::SaveState"/>.
-/// The navigation parameter is available in the LoadState method 
+/// The navigation parameter is available in the LoadState method
 /// in addition to page state preserved during an earlier session.
 
 void HubPage::OnNavigatedTo(NavigationEventArgs^ e)
@@ -96,14 +96,14 @@ void HubPage::LoadState(Object^ sender, Common::LoadStateEventArgs^ e)
 	(void) sender;	// Unused parameter
 	(void) e;	// Unused parameter
 
-	Data::SampleDataSource::GetGroup("Group-Carve")
-		.then([this](Data::SampleDataGroup^ SectionCarveItems)
+	Data::DefaultDataSource::GetGroup("Group-Carve")
+		.then([this](Data::DefaultDataGroup^ SectionCarveItems)
 	{
 		DefaultViewModel->Insert("SectionCarveItems", SectionCarveItems);
 	}, task_continuation_context::use_current());
 
-	Data::SampleDataSource::GetGroup("Group-Ruin")
-		.then([this](Data::SampleDataGroup^ SectionRuinItems)
+	Data::DefaultDataSource::GetGroup("Group-Ruin")
+		.then([this](Data::DefaultDataGroup^ SectionRuinItems)
 	{
 		DefaultViewModel->Insert("SectionRuinItems", SectionRuinItems);
 	}, task_continuation_context::use_current());
@@ -117,7 +117,7 @@ void HubPage::LoadState(Object^ sender, Common::LoadStateEventArgs^ e)
 void HubPage::Hub_SectionHeaderClick(Object^ sender, HubSectionHeaderClickEventArgs^ e)
 {
 	HubSection^ section = e->Section;
-	auto group = safe_cast<Data::SampleDataGroup^>(section->DataContext);
+	auto group = safe_cast<Data::DefaultDataGroup^>(section->DataContext);
 
 	// Navigate to the appropriate destination page, configuring the new page
 	// by passing required information as a navigation parameter
@@ -136,7 +136,7 @@ void HubPage::ItemView_ItemClick(Object^ sender, ItemClickEventArgs^ e)
 
 	// Navigate to the appropriate destination page, configuring the new page
 	// by passing required information as a navigation parameter
-	auto itemId = safe_cast<Data::SampleDataItem^>(e->ClickedItem)->UniqueId;
+	auto itemId = safe_cast<Data::DefaultDataItem^>(e->ClickedItem)->UniqueId;
 	Frame->Navigate(TypeName(ItemPage::typeid), itemId);
 }
 

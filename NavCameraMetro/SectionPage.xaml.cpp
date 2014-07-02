@@ -63,11 +63,11 @@ Common::NavigationHelper^ SectionPage::NavigationHelper::get()
 
 /// The methods provided in this section are simply used to allow
 /// NavigationHelper to respond to the page's navigation methods.
-/// 
-/// Page specific logic should be placed in event handlers for the  
+///
+/// Page specific logic should be placed in event handlers for the
 /// <see cref="NavigationHelper::LoadState"/>
 /// and <see cref="NavigationHelper::SaveState"/>.
-/// The navigation parameter is available in the LoadState method 
+/// The navigation parameter is available in the LoadState method
 /// in addition to page state preserved during an earlier session.
 
 void SectionPage::OnNavigatedTo(NavigationEventArgs^ e)
@@ -98,8 +98,8 @@ void SectionPage::LoadState(Object^ sender, Common::LoadStateEventArgs^ e)
 	(void) sender;	// Unused parameter
 
 	// TODO: Create an appropriate data model for your problem domain to replace the sample data
-	Data::SampleDataSource::GetGroup(safe_cast<String^>(e->NavigationParameter))
-	.then([this](Data::SampleDataGroup^ group)
+	Data::DefaultDataSource::GetGroup(safe_cast<String^>(e->NavigationParameter))
+	.then([this](Data::DefaultDataGroup^ group)
 	{
 		DefaultViewModel->Insert("Group", group);
 		DefaultViewModel->Insert("Items", group->Items);
@@ -118,6 +118,6 @@ void SectionPage::ItemView_ItemClick(Object^ sender, ItemClickEventArgs^ e)
 
 	// Navigate to the appropriate destination page, configuring the new page
 	// by passing required information as a navigation parameter
-	auto itemId = safe_cast<Data::SampleDataItem^>(e->ClickedItem)->UniqueId;
+	auto itemId = safe_cast<Data::DefaultDataItem^>(e->ClickedItem)->UniqueId;
 	Frame->Navigate(TypeName(ItemPage::typeid), itemId);
 }

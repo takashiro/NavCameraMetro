@@ -10,5 +10,5 @@
 
 #include "Common\NavigationHelper.h"
 #include "Common\SuspensionManager.h"
-#include "DataModel\SampleDataSource.h"
+#include "DataModel\DefaultDataSource.h"
 #include "App.xaml.h"

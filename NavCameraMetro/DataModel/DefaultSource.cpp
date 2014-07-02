@@ -1,6 +1,6 @@
 ﻿//
-// SampleDataSource.cpp
-// Implementation of the SampleDataSource, SampleDataGroup, SampleDataItem, and SampleDataCommon classes
+// DefaultDataSource.cpp
+// Implementation of the DefaultDataSource, DefaultDataGroup, DefaultDataItem, and SampleDataCommon classes
 //
 
 #include "pch.h"
@@ -21,10 +21,10 @@ using namespace Windows::Storage;
 using namespace Windows::Data::Json;
 
 //
-// SampleDataItem
+// DefaultDataItem
 //
 
-SampleDataItem::SampleDataItem(String^ uniqueId, String^ title, String^ subtitle, String^ imagePath, String^ description,
+DefaultDataItem::DefaultDataItem(String^ uniqueId, String^ title, String^ subtitle, String^ imagePath, String^ description,
 	String^ content) :
 	_uniqueId(uniqueId),
 	_title(title),
@@ -35,129 +35,129 @@ SampleDataItem::SampleDataItem(String^ uniqueId, String^ title, String^ subtitle
 	{
 	}
 
-	String^ SampleDataItem::UniqueId::get()
+	String^ DefaultDataItem::UniqueId::get()
 	{
 		return _uniqueId;
 	}
 
-	String^ SampleDataItem::Title::get()
+	String^ DefaultDataItem::Title::get()
 	{
 		return _title;
 	}
 
-	String^ SampleDataItem::Subtitle::get()
+	String^ DefaultDataItem::Subtitle::get()
 	{
 		return _subtitle;
 	}
 
-	String^ SampleDataItem::Description::get()
+	String^ DefaultDataItem::Description::get()
 	{
 		return _description;
 	}
 
-	String^ SampleDataItem::Content::get()
+	String^ DefaultDataItem::Content::get()
 	{
 		return _content;
 	}
 
-	String^ SampleDataItem::ImagePath::get()
+	String^ DefaultDataItem::ImagePath::get()
 	{
 		return _imagePath;
 	}
 
-	Windows::UI::Xaml::Data::ICustomProperty^ SampleDataItem::GetCustomProperty(Platform::String^ name)
+	Windows::UI::Xaml::Data::ICustomProperty^ DefaultDataItem::GetCustomProperty(Platform::String^ name)
 	{
 		return nullptr;
 	}
 
-	Windows::UI::Xaml::Data::ICustomProperty^ SampleDataItem::GetIndexedProperty(Platform::String^ name, Windows::UI::Xaml::Interop::TypeName type)
+	Windows::UI::Xaml::Data::ICustomProperty^ DefaultDataItem::GetIndexedProperty(Platform::String^ name, Windows::UI::Xaml::Interop::TypeName type)
 	{
 		return nullptr;
 	}
 
-	Platform::String^ SampleDataItem::GetStringRepresentation()
+	Platform::String^ DefaultDataItem::GetStringRepresentation()
 	{
 		return Title;
 	}
 
-	Windows::UI::Xaml::Interop::TypeName SampleDataItem::Type::get()
+	Windows::UI::Xaml::Interop::TypeName DefaultDataItem::Type::get()
 	{
 		return this->GetType();
 	}
 
 	//
-	// SampleDataGroup
+	// DefaultDataGroup
 	//
 
-	SampleDataGroup::SampleDataGroup(String^ uniqueId, String^ title, String^ subtitle, String^ imagePath, String^ description) :
+	DefaultDataGroup::DefaultDataGroup(String^ uniqueId, String^ title, String^ subtitle, String^ imagePath, String^ description) :
 		_uniqueId(uniqueId),
 		_title(title),
 		_subtitle(subtitle),
 		_description(description),
 		_imagePath(imagePath),
-		_items(ref new Vector<SampleDataItem^>())
+		_items(ref new Vector<DefaultDataItem^>())
 		{
 		}
 
-		String^ SampleDataGroup::UniqueId::get()
+		String^ DefaultDataGroup::UniqueId::get()
 		{
 			return _uniqueId;
 		}
 
-		String^ SampleDataGroup::Title::get()
+		String^ DefaultDataGroup::Title::get()
 		{
 			return _title;
 		}
 
-		String^ SampleDataGroup::Subtitle::get()
+		String^ DefaultDataGroup::Subtitle::get()
 		{
 			return _subtitle;
 		}
 
-		String^ SampleDataGroup::Description::get()
+		String^ DefaultDataGroup::Description::get()
 		{
 			return _description;
 		}
 
-		IObservableVector<SampleDataItem^>^ SampleDataGroup::Items::get()
+		IObservableVector<DefaultDataItem^>^ DefaultDataGroup::Items::get()
 		{
 			return _items;
 		}
 
-		String^ SampleDataGroup::ImagePath::get()
+		String^ DefaultDataGroup::ImagePath::get()
 		{
 			return _imagePath;
 		}
 
-		Windows::UI::Xaml::Data::ICustomProperty^ SampleDataGroup::GetCustomProperty(Platform::String^ name)
+		Windows::UI::Xaml::Data::ICustomProperty^ DefaultDataGroup::GetCustomProperty(Platform::String^ name)
 		{
 			return nullptr;
 		}
 
-		Windows::UI::Xaml::Data::ICustomProperty^ SampleDataGroup::GetIndexedProperty(Platform::String^ name, Windows::UI::Xaml::Interop::TypeName type)
+		Windows::UI::Xaml::Data::ICustomProperty^ DefaultDataGroup::GetIndexedProperty(Platform::String^ name, Windows::UI::Xaml::Interop::TypeName type)
 		{
 			return nullptr;
 		}
 
-		Platform::String^ SampleDataGroup::GetStringRepresentation()
+		Platform::String^ DefaultDataGroup::GetStringRepresentation()
 		{
 			return Title;
 		}
 
-		Windows::UI::Xaml::Interop::TypeName SampleDataGroup::Type::get()
+		Windows::UI::Xaml::Interop::TypeName DefaultDataGroup::Type::get()
 		{
 			return this->GetType();
 		}
 
 		//
-		// SampleDataSource
+		// DefaultDataSource
 		//
 
-		SampleDataSource::SampleDataSource()
+		DefaultDataSource::DefaultDataSource()
 		{
-			_groups = ref new Vector<SampleDataGroup^>();
+			_groups = ref new Vector<DefaultDataGroup^>();
 
-			Uri^ uri = ref new Uri("ms-appx:///DataModel/SampleData.json");
+			Uri^ uri = ref new Uri("ms-appx:///DataModel/DefaultData.json");
 			create_task(StorageFile::GetFileFromApplicationUriAsync(uri))
 				.then([](StorageFile^ storageFile)
 			{
@@ -171,7 +171,7 @@ SampleDataItem::SampleDataItem(String^ uniqueId, String^ title, String^ subtitle
 				for (const auto &jsonGroupValue : jsonVector)
 				{
 					JsonObject^ groupObject = jsonGroupValue->GetObject();
-					SampleDataGroup^ group = ref new SampleDataGroup(groupObject->GetNamedString("UniqueId"),
+					DefaultDataGroup^ group = ref new DefaultDataGroup(groupObject->GetNamedString("UniqueId"),
 						groupObject->GetNamedString("Title"),
 						groupObject->GetNamedString("Subtitle"),
 						groupObject->GetNamedString("ImagePath"),
@@ -182,7 +182,7 @@ SampleDataItem::SampleDataItem(String^ uniqueId, String^ title, String^ subtitle
 					{
 						JsonObject^ itemObject = jsonItemValue->GetObject();
 
-						SampleDataItem^ item = ref new SampleDataItem(itemObject->GetNamedString("UniqueId"),
+						DefaultDataItem^ item = ref new DefaultDataItem(itemObject->GetNamedString("UniqueId"),
 							itemObject->GetNamedString("Title"),
 							itemObject->GetNamedString("Subtitle"),
 							itemObject->GetNamedString("ImagePath"),
@@ -213,35 +213,35 @@ SampleDataItem::SampleDataItem(String^ uniqueId, String^ title, String^ subtitle
 			});
 		}
 
-		IObservableVector<SampleDataGroup^>^ SampleDataSource::Groups::get()
+		IObservableVector<DefaultDataGroup^>^ DefaultDataSource::Groups::get()
 		{
 			return _groups;
 		}
 
-		SampleDataSource^ SampleDataSource::_sampleDataSource = nullptr;
+		DefaultDataSource^ DefaultDataSource::_sampleDataSource = nullptr;
 
-		task<void> SampleDataSource::Init()
+		task<void> DefaultDataSource::Init()
 		{
 			if (_sampleDataSource == nullptr)
 			{
-				_sampleDataSource = ref new SampleDataSource();
+				_sampleDataSource = ref new DefaultDataSource();
 			}
 			return create_task(_sampleDataSource->_loadCompletionEvent);
 		}
 
-		task<IIterable<SampleDataGroup^>^> SampleDataSource::GetGroups()
+		task<IIterable<DefaultDataGroup^>^> DefaultDataSource::GetGroups()
 		{
 			return Init()
-				.then([]() -> IIterable<SampleDataGroup^> ^
+				.then([]() -> IIterable<DefaultDataGroup^> ^
 			{
 				return _sampleDataSource->Groups;
 			});
 		}
 
-		task<SampleDataGroup^> SampleDataSource::GetGroup(String^ uniqueId)
+		task<DefaultDataGroup^> DefaultDataSource::GetGroup(String^ uniqueId)
 		{
 			return Init()
-				.then([uniqueId]() -> SampleDataGroup ^
+				.then([uniqueId]() -> DefaultDataGroup ^
 			{
 				// Simple linear search is acceptable for small data sets
 				for (const auto& group : _sampleDataSource->Groups)
@@ -255,10 +255,10 @@ SampleDataItem::SampleDataItem(String^ uniqueId, String^ title, String^ subtitle
 			});
 		}
 
-		task<SampleDataItem^> SampleDataSource::GetItem(String^ uniqueId)
+		task<DefaultDataItem^> DefaultDataSource::GetItem(String^ uniqueId)
 		{
 			return Init()
-				.then([uniqueId]() -> SampleDataItem ^
+				.then([uniqueId]() -> DefaultDataItem ^
 			{
 				// Simple linear search is acceptable for small data sets
 				for (const auto& group : _sampleDataSource->Groups)

@@ -65,11 +65,11 @@ Common::NavigationHelper^ ItemPage::NavigationHelper::get()
 
 /// The methods provided in this section are simply used to allow
 /// NavigationHelper to respond to the page's navigation methods.
-/// 
-/// Page specific logic should be placed in event handlers for the  
+///
+/// Page specific logic should be placed in event handlers for the
 /// <see cref="NavigationHelper::LoadState"/>
 /// and <see cref="NavigationHelper::SaveState"/>.
-/// The navigation parameter is available in the LoadState method 
+/// The navigation parameter is available in the LoadState method
 /// in addition to page state preserved during an earlier session.
 
 void ItemPage::OnNavigatedTo(NavigationEventArgs^ e)
@@ -106,14 +106,14 @@ void ItemPage::LoadState(Object^ sender, Common::LoadStateEventArgs^ e)
 	}
 
 	// TODO: Create an appropriate data model for your problem domain to replace the sample data
-	Data::SampleDataSource::GetItem(safe_cast<String^>(navigationParameter))
-	.then([this](Data::SampleDataItem^ item)
+	Data::DefaultDataSource::GetItem(safe_cast<String^>(navigationParameter))
+	.then([this](Data::DefaultDataItem^ item)
 	{
 		DefaultViewModel->Insert("Item", item);
 	}, task_continuation_context::use_current());
 
-	Data::SampleDataSource::GetGroup("Group-Carve")
-		.then([this](Data::SampleDataGroup^ group)
+	Data::DefaultDataSource::GetGroup("Group-Carve")
+		.then([this](Data::DefaultDataGroup^ group)
 	{
 		DefaultViewModel->Insert("Hotspots", group->Items);
 	}, task_continuation_context::use_current());

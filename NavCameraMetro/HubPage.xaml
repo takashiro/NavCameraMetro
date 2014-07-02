@@ -57,13 +57,13 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Button  x:Name="backButton" Style="{StaticResource NavigationBackButtonNormalStyle}"
-                        Margin="-1,-1,39,0" 
+                        Margin="-1,-1,39,0"
                         VerticalAlignment="Top"
                         Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
                         AutomationProperties.Name="Back"
                         AutomationProperties.AutomationId="BackButton"
                         AutomationProperties.ItemType="Navigation Button"/>
-                    <TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
+                    <TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1"
                         VerticalAlignment="Top" IsHitTestVisible="false" TextWrapping="NoWrap" />
                 </Grid>
             </Hub.Header>
@@ -72,7 +72,7 @@
                     <ImageBrush ImageSource="Assets/fp.jpg" Stretch="UniformToFill" />
                 </HubSection.Background>
             </HubSection>
-            <HubSection IsHeaderInteractive="True" DataContext="{Binding SectionCarveItems}" d:DataContext="{Binding Groups[3], Source={d:DesignData Source=/DataModel/SampleData.json, Type=data:SampleDataSource}}"
+            <HubSection IsHeaderInteractive="True" DataContext="{Binding SectionCarveItems}" d:DataContext="{Binding Groups[3], Source={d:DesignData Source=/DataModel/DefaultData.json, Type=data:DefaultDataSource}}"
                         x:Uid="CarveHeader" Header="Carve" Padding="40,40,40,32">
                 <DataTemplate>
                     <GridView
@@ -119,7 +119,7 @@
                     </StackPanel>
                 </DataTemplate>
             </HubSection>
-            <HubSection IsHeaderInteractive="True" DataContext="{Binding SectionRuinItems}" d:DataContext="{Binding Groups[3], Source={d:DesignData Source=/DataModel/SampleData.json, Type=data:SampleDataSource}}"
+            <HubSection IsHeaderInteractive="True" DataContext="{Binding SectionRuinItems}" d:DataContext="{Binding Groups[3], Source={d:DesignData Source=/DataModel/DefaultData.json, Type=data:DefaultDataSource}}"
             	x:Uid="AncientRuinsHeader" Header="Ancient Ruins" Padding="40,40,40,32">
                 <DataTemplate>
                     <GridView
