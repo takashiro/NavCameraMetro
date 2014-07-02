@@ -111,12 +111,6 @@ void ItemPage::LoadState(Object^ sender, Common::LoadStateEventArgs^ e)
 	{
 		DefaultViewModel->Insert("Item", item);
 	}, task_continuation_context::use_current());
-
-	Data::DefaultDataSource::GetGroup("Group-Carve")
-		.then([this](Data::DefaultDataGroup^ group)
-	{
-		DefaultViewModel->Insert("Hotspots", group->Items);
-	}, task_continuation_context::use_current());
 }
 
 void ItemPage::AppBar_MediaButtonClick(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs e)

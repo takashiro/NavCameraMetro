@@ -62,6 +62,10 @@ namespace NavCameraMetro
 			property Platform::String^ Description { Platform::String^ get(); }
 			property Platform::String^ Content { Platform::String^ get(); }
 			property Platform::String^ ImagePath { Platform::String^ get(); }
+			property Windows::Foundation::Collections::IObservableVector<DefaultDataHotspot^>^ Hotspots
+			{
+				Windows::Foundation::Collections::IObservableVector<DefaultDataHotspot^>^ get();
+			}
 
 			// Implementation of ICustomPropertyProvider provides a string representation for the object to be used as automation name for accessibility
 			virtual Windows::UI::Xaml::Data::ICustomProperty^ GetCustomProperty(Platform::String^ name);
@@ -80,6 +84,7 @@ namespace NavCameraMetro
 			Platform::String^ _imagePath;
 			Platform::String^ _description;
 			Platform::String^ _content;
+			Platform::Collections::Vector<DefaultDataHotspot^>^ _hotspots;
 		};
 
 		/// <summary>

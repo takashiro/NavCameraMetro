@@ -11,13 +11,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Page.Resources>
-        <!-- Collection of items displayed by this page -->
-        <CollectionViewSource
-        x:Name="hotspotViewSource"
-        Source="{Binding Hotspots}"/>
-    </Page.Resources>
-
     <Page.TopAppBar>
         <AppBar>
             <StackPanel Orientation="Horizontal">
@@ -53,7 +46,7 @@
                     <Canvas.Background>
                         <ImageBrush Stretch="Fill" ImageSource="{Binding ImagePath}"/>
                     </Canvas.Background>
-                    <ItemsControl ItemsSource="{Binding Source={StaticResource hotspotViewSource}}">
+                    <ItemsControl ItemsSource="{Binding Hotspots}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Button Content="Asshole" HorizontalAlignment="Left" VerticalAlignment="Top" Height="73" Width="116" Opacity="100" Canvas.Left="0" Canvas.Top="0"/>
