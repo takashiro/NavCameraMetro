@@ -20,6 +20,36 @@ namespace NavCameraMetro
 		ref class DefaultDataGroup; // Resolve circular relationship between DefaultDataItem and DefaultDataGroup
 
 		/// <summary>
+		/// Generic hotspot data model.
+		/// </summary>
+		[Windows::UI::Xaml::Data::Bindable]
+		public ref class DefaultDataHotspot sealed : public Windows::UI::Xaml::Data::ICustomPropertyProvider
+		{
+		public:
+			property Platform::String^ Label { Platform::String^ get(); }
+			property int Width { int get(); }
+			property int Height { int get(); }
+			property int Top { int get(); }
+			property int Left { int get(); }
+
+			// Implementation of ICustomPropertyProvider provides a string representation for the object to be used as automation name for accessibility
+			virtual Windows::UI::Xaml::Data::ICustomProperty^ GetCustomProperty(Platform::String^ name);
+			virtual Windows::UI::Xaml::Data::ICustomProperty^ GetIndexedProperty(Platform::String^ name, Windows::UI::Xaml::Interop::TypeName type);
+			virtual Platform::String^ GetStringRepresentation();
+			property Windows::UI::Xaml::Interop::TypeName Type { virtual Windows::UI::Xaml::Interop::TypeName get(); }
+
+		internal:
+			DefaultDataHotspot(Platform::String^ label, int width, int height, int top, int left);
+
+		private:
+			Platform::String^ _label;
+			int _width;
+			int _height;
+			int _top;
+			int _left;
+		};
+
+		/// <summary>
 		/// Generic item data model.
 		/// </summary>
 		[Windows::UI::Xaml::Data::Bindable]

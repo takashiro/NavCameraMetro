@@ -24,6 +24,64 @@ using namespace Windows::Data::Json;
 // DefaultDataItem
 //
 
+DefaultDataHotspot::DefaultDataHotspot(String^ label, int width, int height, int top, int left) :
+	_label(label),
+	_width(width),
+	_height(height),
+	_top(top),
+	_left(left)
+{
+}
+
+String^ DefaultDataHotspot::Label::get()
+{
+	return _label;
+}
+
+int DefaultDataHotspot::Width::get()
+{
+	return _width;
+}
+
+int DefaultDataHotspot::Height::get()
+{
+	return _height;
+}
+
+int DefaultDataHotspot::Top::get()
+{
+	return _top;
+}
+
+int DefaultDataHotspot::Left::get()
+{
+	return _left;
+}
+
+Windows::UI::Xaml::Data::ICustomProperty^ DefaultDataHotspot::GetCustomProperty(Platform::String^ name)
+{
+	return nullptr;
+}
+
+Windows::UI::Xaml::Data::ICustomProperty^ DefaultDataHotspot::GetIndexedProperty(Platform::String^ name, Windows::UI::Xaml::Interop::TypeName type)
+{
+	return nullptr;
+}
+
+Platform::String^ DefaultDataHotspot::GetStringRepresentation()
+{
+	return _label;
+}
+
+Windows::UI::Xaml::Interop::TypeName DefaultDataHotspot::Type::get()
+{
+	return this->GetType();
+}
+
+//
+// DefaultDataItem
+//
+
 DefaultDataItem::DefaultDataItem(String^ uniqueId, String^ title, String^ subtitle, String^ imagePath, String^ description,
 	String^ content) :
 	_uniqueId(uniqueId),
@@ -32,245 +90,245 @@ DefaultDataItem::DefaultDataItem(String^ uniqueId, String^ title, String^ subtit
 	_description(description),
 	_imagePath(imagePath),
 	_content(content)
+{
+}
+
+String^ DefaultDataItem::UniqueId::get()
+{
+	return _uniqueId;
+}
+
+String^ DefaultDataItem::Title::get()
+{
+	return _title;
+}
+
+String^ DefaultDataItem::Subtitle::get()
+{
+	return _subtitle;
+}
+
+String^ DefaultDataItem::Description::get()
+{
+	return _description;
+}
+
+String^ DefaultDataItem::Content::get()
+{
+	return _content;
+}
+
+String^ DefaultDataItem::ImagePath::get()
+{
+	return _imagePath;
+}
+
+Windows::UI::Xaml::Data::ICustomProperty^ DefaultDataItem::GetCustomProperty(Platform::String^ name)
+{
+	return nullptr;
+}
+
+Windows::UI::Xaml::Data::ICustomProperty^ DefaultDataItem::GetIndexedProperty(Platform::String^ name, Windows::UI::Xaml::Interop::TypeName type)
+{
+	return nullptr;
+}
+
+Platform::String^ DefaultDataItem::GetStringRepresentation()
+{
+	return Title;
+}
+
+Windows::UI::Xaml::Interop::TypeName DefaultDataItem::Type::get()
+{
+	return this->GetType();
+}
+
+//
+// DefaultDataGroup
+//
+
+DefaultDataGroup::DefaultDataGroup(String^ uniqueId, String^ title, String^ subtitle, String^ imagePath, String^ description) :
+	_uniqueId(uniqueId),
+	_title(title),
+	_subtitle(subtitle),
+	_description(description),
+	_imagePath(imagePath),
+	_items(ref new Vector<DefaultDataItem^>())
 	{
 	}
 
-	String^ DefaultDataItem::UniqueId::get()
+	String^ DefaultDataGroup::UniqueId::get()
 	{
 		return _uniqueId;
 	}
 
-	String^ DefaultDataItem::Title::get()
+	String^ DefaultDataGroup::Title::get()
 	{
 		return _title;
 	}
 
-	String^ DefaultDataItem::Subtitle::get()
+	String^ DefaultDataGroup::Subtitle::get()
 	{
 		return _subtitle;
 	}
 
-	String^ DefaultDataItem::Description::get()
+	String^ DefaultDataGroup::Description::get()
 	{
 		return _description;
 	}
 
-	String^ DefaultDataItem::Content::get()
+	IObservableVector<DefaultDataItem^>^ DefaultDataGroup::Items::get()
 	{
-		return _content;
+		return _items;
 	}
 
-	String^ DefaultDataItem::ImagePath::get()
+	String^ DefaultDataGroup::ImagePath::get()
 	{
 		return _imagePath;
 	}
 
-	Windows::UI::Xaml::Data::ICustomProperty^ DefaultDataItem::GetCustomProperty(Platform::String^ name)
+	Windows::UI::Xaml::Data::ICustomProperty^ DefaultDataGroup::GetCustomProperty(Platform::String^ name)
 	{
 		return nullptr;
 	}
 
-	Windows::UI::Xaml::Data::ICustomProperty^ DefaultDataItem::GetIndexedProperty(Platform::String^ name, Windows::UI::Xaml::Interop::TypeName type)
+	Windows::UI::Xaml::Data::ICustomProperty^ DefaultDataGroup::GetIndexedProperty(Platform::String^ name, Windows::UI::Xaml::Interop::TypeName type)
 	{
 		return nullptr;
 	}
 
-	Platform::String^ DefaultDataItem::GetStringRepresentation()
+	Platform::String^ DefaultDataGroup::GetStringRepresentation()
 	{
 		return Title;
 	}
 
-	Windows::UI::Xaml::Interop::TypeName DefaultDataItem::Type::get()
+	Windows::UI::Xaml::Interop::TypeName DefaultDataGroup::Type::get()
 	{
 		return this->GetType();
 	}
 
 	//
-	// DefaultDataGroup
+	// DefaultDataSource
 	//
 
-	DefaultDataGroup::DefaultDataGroup(String^ uniqueId, String^ title, String^ subtitle, String^ imagePath, String^ description) :
-		_uniqueId(uniqueId),
-		_title(title),
-		_subtitle(subtitle),
-		_description(description),
-		_imagePath(imagePath),
-		_items(ref new Vector<DefaultDataItem^>())
+	DefaultDataSource::DefaultDataSource()
+	{
+		_groups = ref new Vector<DefaultDataGroup^>();
+
+		Uri^ uri = ref new Uri("ms-appx:///DataModel/DefaultData.json");
+		create_task(StorageFile::GetFileFromApplicationUriAsync(uri))
+			.then([](StorageFile^ storageFile)
 		{
-		}
-
-		String^ DefaultDataGroup::UniqueId::get()
+			return FileIO::ReadTextAsync(storageFile);
+		})
+			.then([this](String^ jsonText)
 		{
-			return _uniqueId;
-		}
+			JsonObject^ jsonObject = JsonObject::Parse(jsonText);
+			auto jsonVector = jsonObject->GetNamedArray("Groups")->GetView();
 
-		String^ DefaultDataGroup::Title::get()
-		{
-			return _title;
-		}
-
-		String^ DefaultDataGroup::Subtitle::get()
-		{
-			return _subtitle;
-		}
-
-		String^ DefaultDataGroup::Description::get()
-		{
-			return _description;
-		}
-
-		IObservableVector<DefaultDataItem^>^ DefaultDataGroup::Items::get()
-		{
-			return _items;
-		}
-
-		String^ DefaultDataGroup::ImagePath::get()
-		{
-			return _imagePath;
-		}
-
-		Windows::UI::Xaml::Data::ICustomProperty^ DefaultDataGroup::GetCustomProperty(Platform::String^ name)
-		{
-			return nullptr;
-		}
-
-		Windows::UI::Xaml::Data::ICustomProperty^ DefaultDataGroup::GetIndexedProperty(Platform::String^ name, Windows::UI::Xaml::Interop::TypeName type)
-		{
-			return nullptr;
-		}
-
-		Platform::String^ DefaultDataGroup::GetStringRepresentation()
-		{
-			return Title;
-		}
-
-		Windows::UI::Xaml::Interop::TypeName DefaultDataGroup::Type::get()
-		{
-			return this->GetType();
-		}
-
-		//
-		// DefaultDataSource
-		//
-
-		DefaultDataSource::DefaultDataSource()
-		{
-			_groups = ref new Vector<DefaultDataGroup^>();
-
-			Uri^ uri = ref new Uri("ms-appx:///DataModel/DefaultData.json");
-			create_task(StorageFile::GetFileFromApplicationUriAsync(uri))
-				.then([](StorageFile^ storageFile)
+			for (const auto &jsonGroupValue : jsonVector)
 			{
-				return FileIO::ReadTextAsync(storageFile);
-			})
-				.then([this](String^ jsonText)
-			{
-				JsonObject^ jsonObject = JsonObject::Parse(jsonText);
-				auto jsonVector = jsonObject->GetNamedArray("Groups")->GetView();
+				JsonObject^ groupObject = jsonGroupValue->GetObject();
+				DefaultDataGroup^ group = ref new DefaultDataGroup(groupObject->GetNamedString("UniqueId"),
+					groupObject->GetNamedString("Title"),
+					groupObject->GetNamedString("Subtitle"),
+					groupObject->GetNamedString("ImagePath"),
+					groupObject->GetNamedString("Description"));
 
-				for (const auto &jsonGroupValue : jsonVector)
+				auto jsonItemVector = groupObject->GetNamedArray("Items")->GetView();
+				for (const auto &jsonItemValue : jsonItemVector)
 				{
-					JsonObject^ groupObject = jsonGroupValue->GetObject();
-					DefaultDataGroup^ group = ref new DefaultDataGroup(groupObject->GetNamedString("UniqueId"),
-						groupObject->GetNamedString("Title"),
-						groupObject->GetNamedString("Subtitle"),
-						groupObject->GetNamedString("ImagePath"),
-						groupObject->GetNamedString("Description"));
+					JsonObject^ itemObject = jsonItemValue->GetObject();
 
-					auto jsonItemVector = groupObject->GetNamedArray("Items")->GetView();
-					for (const auto &jsonItemValue : jsonItemVector)
-					{
-						JsonObject^ itemObject = jsonItemValue->GetObject();
+					DefaultDataItem^ item = ref new DefaultDataItem(itemObject->GetNamedString("UniqueId"),
+						itemObject->GetNamedString("Title"),
+						itemObject->GetNamedString("Subtitle"),
+						itemObject->GetNamedString("ImagePath"),
+						itemObject->GetNamedString("Description"),
+						itemObject->GetNamedString("Content"));
 
-						DefaultDataItem^ item = ref new DefaultDataItem(itemObject->GetNamedString("UniqueId"),
-							itemObject->GetNamedString("Title"),
-							itemObject->GetNamedString("Subtitle"),
-							itemObject->GetNamedString("ImagePath"),
-							itemObject->GetNamedString("Description"),
-							itemObject->GetNamedString("Content"));
-
-						group->Items->Append(item);
-					};
-
-					_groups->Append(group);
+					group->Items->Append(item);
 				};
-			})
-				.then([this](task<void> t)
-			{
-				try
-				{
-					t.get();
-				}
-				catch (Platform::COMException^ e)
-				{
-					OutputDebugString(e->Message->Data());
-					// TODO: If App can recover from exception,
-					// remove throw; below and add recovery code.
-					throw;
-				}
-				// Signal load completion event
-				_loadCompletionEvent.set();
-			});
-		}
 
-		IObservableVector<DefaultDataGroup^>^ DefaultDataSource::Groups::get()
+				_groups->Append(group);
+			};
+		})
+			.then([this](task<void> t)
 		{
-			return _groups;
-		}
-
-		DefaultDataSource^ DefaultDataSource::_sampleDataSource = nullptr;
-
-		task<void> DefaultDataSource::Init()
-		{
-			if (_sampleDataSource == nullptr)
+			try
 			{
-				_sampleDataSource = ref new DefaultDataSource();
+				t.get();
 			}
-			return create_task(_sampleDataSource->_loadCompletionEvent);
-		}
-
-		task<IIterable<DefaultDataGroup^>^> DefaultDataSource::GetGroups()
-		{
-			return Init()
-				.then([]() -> IIterable<DefaultDataGroup^> ^
+			catch (Platform::COMException^ e)
 			{
-				return _sampleDataSource->Groups;
-			});
-		}
+				OutputDebugString(e->Message->Data());
+				// TODO: If App can recover from exception,
+				// remove throw; below and add recovery code.
+				throw;
+			}
+			// Signal load completion event
+			_loadCompletionEvent.set();
+		});
+	}
 
-		task<DefaultDataGroup^> DefaultDataSource::GetGroup(String^ uniqueId)
+	IObservableVector<DefaultDataGroup^>^ DefaultDataSource::Groups::get()
+	{
+		return _groups;
+	}
+
+	DefaultDataSource^ DefaultDataSource::_sampleDataSource = nullptr;
+
+	task<void> DefaultDataSource::Init()
+	{
+		if (_sampleDataSource == nullptr)
 		{
-			return Init()
-				.then([uniqueId]() -> DefaultDataGroup ^
+			_sampleDataSource = ref new DefaultDataSource();
+		}
+		return create_task(_sampleDataSource->_loadCompletionEvent);
+	}
+
+	task<IIterable<DefaultDataGroup^>^> DefaultDataSource::GetGroups()
+	{
+		return Init()
+			.then([]() -> IIterable<DefaultDataGroup^> ^
+		{
+			return _sampleDataSource->Groups;
+		});
+	}
+
+	task<DefaultDataGroup^> DefaultDataSource::GetGroup(String^ uniqueId)
+	{
+		return Init()
+			.then([uniqueId]() -> DefaultDataGroup ^
+		{
+			// Simple linear search is acceptable for small data sets
+			for (const auto& group : _sampleDataSource->Groups)
 			{
-				// Simple linear search is acceptable for small data sets
-				for (const auto& group : _sampleDataSource->Groups)
+				if (group->UniqueId == uniqueId)
 				{
-					if (group->UniqueId == uniqueId)
+					return group;
+				}
+			}
+			return nullptr;
+		});
+	}
+
+	task<DefaultDataItem^> DefaultDataSource::GetItem(String^ uniqueId)
+	{
+		return Init()
+			.then([uniqueId]() -> DefaultDataItem ^
+		{
+			// Simple linear search is acceptable for small data sets
+			for (const auto& group : _sampleDataSource->Groups)
+			{
+				for (const auto& item : group->Items)
+				{
+					if (item->UniqueId == uniqueId)
 					{
-						return group;
+						return item;
 					}
 				}
-				return nullptr;
-			});
-		}
-
-		task<DefaultDataItem^> DefaultDataSource::GetItem(String^ uniqueId)
-		{
-			return Init()
-				.then([uniqueId]() -> DefaultDataItem ^
-			{
-				// Simple linear search is acceptable for small data sets
-				for (const auto& group : _sampleDataSource->Groups)
-				{
-					for (const auto& item : group->Items)
-					{
-						if (item->UniqueId == uniqueId)
-						{
-							return item;
-						}
-					}
-				}
-				return nullptr;
-			});
-		}
+			}
+			return nullptr;
+		});
+	}
