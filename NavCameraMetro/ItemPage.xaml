@@ -10,6 +10,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+
     <Page.TopAppBar>
         <AppBar>
             <StackPanel Orientation="Horizontal">
@@ -27,7 +28,7 @@
     -->
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
         DataContext="{Binding Item}"
-        d:DataContext="{Binding Groups[6].Items[0], Source={d:DesignData Source=/DataModel/SampleData.json, Type=data:SampleDataSource}}">
+        d:DataContext="{Binding Groups[0].Items[0], Source={d:DesignData Source=/DataModel/SampleData.json, Type=data:SampleDataSource}}">
         <Grid.ChildrenTransitions>
             <TransitionCollection>
                 <EntranceThemeTransition/>
@@ -38,17 +39,18 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Back button and page title -->
         <ScrollViewer Grid.Row="1" x:Name="contentRegion">
             <StackPanel Orientation="Horizontal">
-                <HubSection>
-                    <DataTemplate>
-                        <Grid>
-                            <Image HorizontalAlignment="Left" Source="{Binding ImagePath}"/>
-                        </Grid>
-                    </DataTemplate>
-                </HubSection>
-                <TextBlock TextWrapping="Wrap" Text="{Binding Description}" FontSize="32" Width="400"/>
+                <Grid x:Name="itemGridView"
+                      Width="700"
+                      Margin="10">
+                    <Grid.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="{Binding ImagePath}"/>
+                    </Grid.Background>
+                    <Button Content="Asshole" HorizontalAlignment="Left" Margin="537,157,0,0" VerticalAlignment="Top" Height="73" Width="116" Opacity="0"/>
+                    <Button Content="Camel" HorizontalAlignment="Left" Margin="147,197,0,0" VerticalAlignment="Top" Height="176" Width="191" Opacity="0" PointerEntered="HotspotButton_PointerEntered" PointerExited="HotspotButton_PointerExited"/>
+                </Grid>
+                <TextBlock TextWrapping="Wrap" Text="{Binding Description}" FontSize="32" Width="400" Padding="10"/>
             </StackPanel>
         </ScrollViewer>
 

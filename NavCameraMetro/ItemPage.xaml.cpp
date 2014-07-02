@@ -118,3 +118,17 @@ void ItemPage::AppBar_MediaButtonClick(Platform::Object^ sender, Windows::UI::Xa
 	// TODO: transfer item id to the media page
 	Frame->Navigate(TypeName(MediaPage::typeid));
 }
+
+
+void NavCameraMetro::ItemPage::HotspotButton_PointerEntered(Platform::Object^ sender, Windows::UI::Xaml::Input::PointerRoutedEventArgs^ e)
+{
+	Button ^button = safe_cast<Button ^>(sender);
+	button->Opacity = 100;
+}
+
+
+void NavCameraMetro::ItemPage::HotspotButton_PointerExited(Platform::Object^ sender, Windows::UI::Xaml::Input::PointerRoutedEventArgs^ e)
+{
+	Button ^button = safe_cast<Button ^>(sender);
+	button->Opacity = 0;
+}

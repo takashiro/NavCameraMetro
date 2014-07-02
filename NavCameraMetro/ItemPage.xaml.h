@@ -45,5 +45,7 @@ namespace NavCameraMetro
 		static Windows::UI::Xaml::DependencyProperty^ _navigationHelperProperty;
 
 		void AppBar_MediaButtonClick(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs e);
+		void HotspotButton_PointerEntered(Platform::Object^ sender, Windows::UI::Xaml::Input::PointerRoutedEventArgs^ e);
+		void HotspotButton_PointerExited(Platform::Object^ sender, Windows::UI::Xaml::Input::PointerRoutedEventArgs^ e);
 	};
 }
