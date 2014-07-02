@@ -134,6 +134,9 @@
     <ClInclude Include="ActivityPage.xaml.h">
       <DependentUpon>ActivityPage.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="MediaPage.xaml.h">
+      <DependentUpon>MediaPage.xaml</DependentUpon>
+    </ClInclude>
     <ClInclude Include="NavigatorPage.xaml.h">
       <DependentUpon>NavigatorPage.xaml</DependentUpon>
     </ClInclude>
@@ -163,6 +166,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="HubPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MediaPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Include="NavigatorPage.xaml">
@@ -221,6 +227,9 @@
     <ClCompile Include="Common\SuspensionManager.cpp" />
     <ClCompile Include="HubPage.xaml.cpp">
       <DependentUpon>HubPage.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="MediaPage.xaml.cpp">
+      <DependentUpon>MediaPage.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="NavigatorPage.xaml.cpp">
       <DependentUpon>NavigatorPage.xaml</DependentUpon>

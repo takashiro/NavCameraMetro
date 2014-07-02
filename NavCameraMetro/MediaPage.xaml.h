@@ -1,23 +1,25 @@
 ﻿//
-// ItemPage.xaml.h
-// Declaration of the ItemPage class
+// ItemsPage1.xaml.h
+// Declaration of the ItemsPage1 class
 //
 
 #pragma once
 
-#include "ItemPage.g.h"
+#include "MediaPage.g.h"
+#include "Common\NavigationHelper.h"
 
 namespace NavCameraMetro
 {
 	/// <summary>
-	/// A page that displays details for a single item within a group while allowing gestures to
-	/// flip through other items belonging to the same group.
+	/// A page that displays a collection of item previews.  In the Split Application this page
+	/// is used to display and select one of the available groups.
 	/// </summary>
-	[Windows::UI::Xaml::Data::Bindable]
-	public ref class ItemPage sealed
+	[Windows::Foundation::Metadata::WebHostHidden]
+	public ref class MediaPage sealed
 	{
 	public:
-		ItemPage();
+		MediaPage();
+
 		/// <summary>
 		/// This can be changed to a strongly typed view model.
 		/// </summary>
@@ -25,6 +27,7 @@ namespace NavCameraMetro
 		{
 			Windows::Foundation::Collections::IObservableMap<Platform::String^, Platform::Object^>^  get();
 		}
+
 		/// <summary>
 		/// NavigationHelper is used on each page to aid in navigation and 
 		/// process lifetime management
@@ -43,7 +46,5 @@ namespace NavCameraMetro
 
 		static Windows::UI::Xaml::DependencyProperty^ _defaultViewModelProperty;
 		static Windows::UI::Xaml::DependencyProperty^ _navigationHelperProperty;
-
-		void AppBar_MediaButtonClick(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs e);
 	};
 }

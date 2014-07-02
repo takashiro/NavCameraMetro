@@ -116,6 +116,7 @@
     <Page Include="ItemPage.xaml" />
     <Page Include="ActivityPage.xaml" />
     <Page Include="NavigatorPage.xaml" />
+    <Page Include="MediaPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\fp.jpg">

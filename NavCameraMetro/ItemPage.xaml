@@ -14,7 +14,7 @@
         <AppBar>
             <StackPanel Orientation="Horizontal">
                 <AppBarButton Icon="Bookmarks" Label="INTRODUCTION" IsEnabled="False" />
-                <AppBarButton Icon="VideoChat" Label="VIDEO" />
+                <AppBarButton Icon="VideoChat" Label="MEDIA" Click="AppBar_MediaButtonClick" />
                 <AppBarButton Icon="Street" Label="3D MODEL" />
             </StackPanel>
         </AppBar>

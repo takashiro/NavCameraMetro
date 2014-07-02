@@ -1,10 +1,9 @@
 ﻿//
-// ItemPage.xaml.cpp
-// Implementation of the ItemPage class
+// ItemsPage1.xaml.cpp
+// Implementation of the MediaPage class
 //
 
 #include "pch.h"
-#include "ItemPage.xaml.h"
 #include "MediaPage.xaml.h"
 
 using namespace NavCameraMetro;
@@ -25,38 +24,38 @@ using namespace Windows::UI::Xaml::Interop;
 using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Navigation;
 
-// The Item Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234232
+// The Items Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234233
 
-ItemPage::ItemPage()
+MediaPage::MediaPage()
 {
 	InitializeComponent();
 	SetValue(_defaultViewModelProperty, ref new Map<String^,Object^>(std::less<String^>()));
 	auto navigationHelper = ref new Common::NavigationHelper(this);
 	SetValue(_navigationHelperProperty, navigationHelper);
-	navigationHelper->LoadState += ref new Common::LoadStateEventHandler(this, &ItemPage::LoadState);
+	navigationHelper->LoadState += ref new Common::LoadStateEventHandler(this, &MediaPage::LoadState);
 }
 
-DependencyProperty^ ItemPage::_defaultViewModelProperty =
+DependencyProperty^ MediaPage::_defaultViewModelProperty =
 	DependencyProperty::Register("DefaultViewModel",
-		TypeName(IObservableMap<String^,Object^>::typeid), TypeName(ItemPage::typeid), nullptr);
+		TypeName(IObservableMap<String^,Object^>::typeid), TypeName(MediaPage::typeid), nullptr);
 
 /// <summary>
 /// used as a trivial view model.
 /// </summary>
-IObservableMap<String^, Object^>^ ItemPage::DefaultViewModel::get()
+IObservableMap<String^, Object^>^ MediaPage::DefaultViewModel::get()
 {
 	return safe_cast<IObservableMap<String^, Object^>^>(GetValue(_defaultViewModelProperty));
 }
 
-DependencyProperty^ ItemPage::_navigationHelperProperty =
+DependencyProperty^ MediaPage::_navigationHelperProperty =
 	DependencyProperty::Register("NavigationHelper",
-		TypeName(Common::NavigationHelper::typeid), TypeName(ItemPage::typeid), nullptr);
+		TypeName(Common::NavigationHelper::typeid), TypeName(MediaPage::typeid), nullptr);
 
 /// <summary>
 /// Gets an implementation of <see cref="NavigationHelper"/> designed to be
 /// used as a trivial view model.
 /// </summary>
-Common::NavigationHelper^ ItemPage::NavigationHelper::get()
+Common::NavigationHelper^ MediaPage::NavigationHelper::get()
 {
 	return safe_cast<Common::NavigationHelper^>(GetValue(_navigationHelperProperty));
 }
@@ -72,12 +71,12 @@ Common::NavigationHelper^ ItemPage::NavigationHelper::get()
 /// The navigation parameter is available in the LoadState method 
 /// in addition to page state preserved during an earlier session.
 
-void ItemPage::OnNavigatedTo(NavigationEventArgs^ e)
+void MediaPage::OnNavigatedTo(NavigationEventArgs^ e)
 {
 	NavigationHelper->OnNavigatedTo(e);
 }
 
-void ItemPage::OnNavigatedFrom(NavigationEventArgs^ e)
+void MediaPage::OnNavigatedFrom(NavigationEventArgs^ e)
 {
 	NavigationHelper->OnNavigatedFrom(e);
 }
@@ -88,33 +87,15 @@ void ItemPage::OnNavigatedFrom(NavigationEventArgs^ e)
 /// Populates the page with content passed during navigation.  Any saved state is also
 /// provided when recreating a page from a prior session.
 /// </summary>
-/// <param name="sender">
-/// The source of the event; typically <see cref="NavigationHelper"/>
+/// <param name="navigationParameter">The parameter value passed to
+/// <see cref="Frame::Navigate(Type, Object)"/> when this page was initially requested.
 /// </param>
-/// <param name="e">Event data that provides both the navigation parameter passed to
-/// <see cref="Frame::Navigate(Type, Object)"/> when this page was initially requested and
-/// a dictionary of state preserved by this page during an earlier
-/// session.  The state will be null the first time a page is visited.</param>
-void ItemPage::LoadState(Object^ sender, Common::LoadStateEventArgs^ e)
+/// <param name="pageState">A map of state preserved by this page during an earlier
+/// session.  This will be null the first time a page is visited.</param>
+void MediaPage::LoadState(Platform::Object^ sender, Common::LoadStateEventArgs^ e)
 {
-	String^ navigationParameter = safe_cast<String^>(e->NavigationParameter);
+	(void) sender;	// Unused parameter
+	(void) e;	// Unused parameter
 
-	// Allow saved page state to override the initial item to display
-	if (e->PageState != nullptr && e->PageState->HasKey("SelectedItem"))
-	{
-		navigationParameter = safe_cast<String^>(e->PageState->Lookup("SelectedItem"));
-	}
-
-	// TODO: Create an appropriate data model for your problem domain to replace the sample data
-	Data::SampleDataSource::GetItem(safe_cast<String^>(navigationParameter))
-	.then([this](Data::SampleDataItem^ item)
-	{
-		DefaultViewModel->Insert("Item", item);
-	}, task_continuation_context::use_current());
-}
-
-void ItemPage::AppBar_MediaButtonClick(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs e)
-{
-	// TODO: transfer item id to the media page
-	Frame->Navigate(TypeName(MediaPage::typeid));
+	// TODO: Set a bindable collection of items using DefaultViewModel->("Items", <value>)
 }
