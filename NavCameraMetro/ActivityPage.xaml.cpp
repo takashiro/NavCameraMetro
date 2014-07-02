@@ -91,8 +91,11 @@ Common::NavigationHelper^ ActivityPage::NavigationHelper::get()
 /// session.  This will be null the first time a page is visited.</param>
 void ActivityPage::LoadState(Platform::Object^ sender, Common::LoadStateEventArgs^ e)
 {
-	// TODO: Set a bindable group using DefaultViewModel->Insert("Group", <value>)
-	// TODO: Set a collection of bindable items using DefaultViewModel->Insert("Items", <value>)
+	Data::SampleDataSource::GetGroup("Group-Activity")
+		.then([this](Data::SampleDataGroup^ group)
+	{
+		DefaultViewModel->Insert("Items", group->Items);
+	}, task_continuation_context::use_current());
 
 	if (e->PageState == nullptr)
 	{

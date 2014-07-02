@@ -409,7 +409,7 @@
     [
       {
         "UniqueId": "Group-Activity-Item-1",
-        "Title": "Item Title: 1",
+        "Title": "Activity 1",
         "Subtitle": "Item Subtitle: 1",
         "ImagePath": "Assets/DarkGray.png",
         "Description" : "Item Description: Pellentesque porta, mauris quis interdum vehicula, urna sapien ultrices velit, nec venenatis dui odio in augue. Cras posuere, enim a cursus convallis, neque turpis malesuada erat, ut adipiscing neque tortor ac erat.",
@@ -417,7 +417,7 @@
       },
       {
         "UniqueId": "Group-Activity-Item-2",
-        "Title": "Item Title: 2",
+        "Title": "Activity 2",
         "Subtitle": "Item Subtitle: 2",
         "ImagePath": "Assets/MediumGray.png",
         "Description" : "Item Description: Pellentesque porta, mauris quis interdum vehicula, urna sapien ultrices velit, nec venenatis dui odio in augue. Cras posuere, enim a cursus convallis, neque turpis malesuada erat, ut adipiscing neque tortor ac erat.",
@@ -425,7 +425,7 @@
       },
       {
         "UniqueId": "Group-Activity-Item-3",
-        "Title": "Item Title: 3",
+        "Title": "Activity 3",
         "Subtitle": "Item Subtitle: 3",
         "ImagePath": "Assets/LightGray.png",
         "Description" : "Item Description: Pellentesque porta, mauris quis interdum vehicula, urna sapien ultrices velit, nec venenatis dui odio in augue. Cras posuere, enim a cursus convallis, neque turpis malesuada erat, ut adipiscing neque tortor ac erat.",
