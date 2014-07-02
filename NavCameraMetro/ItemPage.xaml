@@ -49,7 +49,16 @@
                     <ItemsControl ItemsSource="{Binding Hotspots}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Button Content="Asshole" HorizontalAlignment="Left" VerticalAlignment="Top" Height="73" Width="116" Opacity="100" Canvas.Left="0" Canvas.Top="0"/>
+                                <Button Content="{Binding Label}"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Left"
+                                        Width="{Binding Width}" 
+                                        Height="{Binding Height}"
+                                        Canvas.Top="{Binding Top}"
+                                        Canvas.Left="{Binding Left}"
+                                        Opacity="0"
+                                        PointerEntered="HotspotButton_PointerEntered"
+                                        PointerExited="HotspotButton_PointerExited"/>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
