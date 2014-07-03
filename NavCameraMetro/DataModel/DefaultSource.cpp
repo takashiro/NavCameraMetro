@@ -271,7 +271,7 @@ DefaultDataSource::DefaultDataSource()
 							(int)hotspotObject->GetNamedNumber("Height"),
 							(int)hotspotObject->GetNamedNumber("Top"),
 							(int)hotspotObject->GetNamedNumber("Left"),
-							(int)hotspotObject->GetNamedString("LinkedItemId"));
+							hotspotObject->GetNamedString("LinkedItemId"));
 
 						item->Hotspots->Append(hotspot);
 					};
