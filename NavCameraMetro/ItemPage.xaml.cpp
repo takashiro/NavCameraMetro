@@ -144,3 +144,9 @@ void NavCameraMetro::ItemPage::HotspotButton_Click(Platform::Object^ sender, Win
 	Button ^button = safe_cast<Button ^>(sender);
 	Frame->Navigate(TypeName(ItemPage::typeid), button->CommandParameter);
 }
+
+
+void NavCameraMetro::ItemPage::ClearButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	commentEdit->Text = "";
+}
