@@ -6,6 +6,7 @@
 #include "pch.h"
 #include "ItemPage.xaml.h"
 #include "MediaPage.xaml.h"
+#include "F3DPage.xaml.h"
 
 using namespace NavCameraMetro;
 
@@ -113,12 +114,16 @@ void ItemPage::LoadState(Object^ sender, Common::LoadStateEventArgs^ e)
 	}, task_continuation_context::use_current());
 }
 
-void ItemPage::AppBar_MediaButtonClick(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs e)
+void ItemPage::AppBarMediaButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs e)
 {
 	// TODO: transfer item id to the media page
 	Frame->Navigate(TypeName(MediaPage::typeid));
 }
 
+void NavCameraMetro::ItemPage::AppBar3DModelButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	Frame->Navigate(TypeName(F3DPage::typeid));
+}
 
 void NavCameraMetro::ItemPage::HotspotButton_PointerEntered(Platform::Object^ sender, Windows::UI::Xaml::Input::PointerRoutedEventArgs^ e)
 {
