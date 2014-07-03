@@ -150,3 +150,16 @@ void NavCameraMetro::ItemPage::ClearButton_Click(Platform::Object^ sender, Windo
 {
 	commentEdit->Text = "";
 }
+
+
+void NavCameraMetro::ItemPage::CommentButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	TextBlock ^block = ref new TextBlock;
+	block->Width = 400;
+	block->Height = 100;
+	block->FontSize = 26;
+	block->TextWrapping = TextWrapping::Wrap;
+	block->Text = commentEdit->Text;
+	commentList->Items->InsertAt(0, block);
+	commentEdit->Text = "";
+}

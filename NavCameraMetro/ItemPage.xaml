@@ -69,21 +69,11 @@
                     <TextBlock TextWrapping="Wrap" Text="{Binding Description}" FontSize="26" Width="500" Margin="0,0,0,50"/>
                     <TextBox x:Name="commentEdit" TextWrapping="Wrap" PlaceholderText="Something to say?" FontSize="26" Width="500" Height="200"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button Content="Comment" Width="120" Height="60"/>
+                        <Button Content="Comment" Width="120" Height="60" Click="CommentButton_Click"/>
                         <Button Content="Clear" Width="120" Height="60" Click="ClearButton_Click"/>
                     </StackPanel>
                 </StackPanel>
-                <GridView SelectionMode="None">
-                    <TextBlock TextWrapping="Wrap" Text="Comment1" FontSize="26" Width="400" Height="120" Padding="10"/>
-                    <TextBlock TextWrapping="Wrap" Text="Comment2" FontSize="26" Width="400" Height="120" Padding="10"/>
-                    <TextBlock TextWrapping="Wrap" Text="Comment3" FontSize="26" Width="400" Height="120" Padding="10"/>
-                    <TextBlock TextWrapping="Wrap" Text="Comment1" FontSize="26" Width="400" Height="120" Padding="10"/>
-                    <TextBlock TextWrapping="Wrap" Text="Comment2" FontSize="26" Width="400" Height="120" Padding="10"/>
-                    <TextBlock TextWrapping="Wrap" Text="Comment3" FontSize="26" Width="400" Height="120" Padding="10"/>
-                    <TextBlock TextWrapping="Wrap" Text="Comment1" FontSize="26" Width="400" Height="120" Padding="10"/>
-                    <TextBlock TextWrapping="Wrap" Text="Comment2" FontSize="26" Width="400" Height="120" Padding="10"/>
-                    <TextBlock TextWrapping="Wrap" Text="Comment3" FontSize="26" Width="400" Height="120" Padding="10"/>
-                </GridView>
+                <GridView x:Name="commentList" SelectionMode="None"></GridView>
             </StackPanel>
         </ScrollViewer>
 
