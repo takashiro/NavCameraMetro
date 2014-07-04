@@ -71,6 +71,9 @@
     <Filter Include="Assets\f3d">
       <UniqueIdentifier>{1f45b97d-eac5-442e-b20c-c143806c4a6a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Content">
+      <UniqueIdentifier>{878997e6-a05c-43a8-afe9-56d7c49505f9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="Strings\en-US\Resources.resw">
@@ -92,6 +95,18 @@
     <ClCompile Include="DataModel\DefaultSource.cpp">
       <Filter>DataModel</Filter>
     </ClCompile>
+    <ClCompile Include="F3DPage.xaml.cpp" />
+    <ClCompile Include="Common\DeviceResources.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Content\Sample3DSceneRenderer.cpp">
+      <Filter>Content</Filter>
+    </ClCompile>
+    <ClCompile Include="Content\SampleFpsTextRenderer.cpp">
+      <Filter>Content</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectXPage.xaml.cpp" />
+    <ClCompile Include="App1Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -105,12 +120,36 @@
     <ClInclude Include="DataModel\DefaultDataSource.h">
       <Filter>DataModel</Filter>
     </ClInclude>
+    <ClInclude Include="F3DPage.xaml.h" />
+    <ClInclude Include="Common\DeviceResources.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\DirectXHelper.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\StepTimer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Content\Sample3DSceneRenderer.h">
+      <Filter>Content</Filter>
+    </ClInclude>
+    <ClInclude Include="Content\SampleFpsTextRenderer.h">
+      <Filter>Content</Filter>
+    </ClInclude>
+    <ClInclude Include="Content\ShaderStructures.h">
+      <Filter>Content</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectXPage.xaml.h" />
+    <ClInclude Include="App1Main.h" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest" />
   </ItemGroup>
   <ItemGroup>
     <None Include="NavCameraMetro_TemporaryKey.pfx" />
+    <None Include="Sample3DScene.fbx">
+      <Filter>Assets</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Page Include="HubPage.xaml" />
@@ -120,6 +159,7 @@
     <Page Include="NavigatorPage.xaml" />
     <Page Include="MediaPage.xaml" />
     <Page Include="F3DPage.xaml" />
+    <Page Include="DirectXPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\fp.jpg">
@@ -373,5 +413,13 @@
     <Text Include="DataModel\DefaultData.json">
       <Filter>DataModel</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Content\SamplePixelShader.hlsl">
+      <Filter>Content</Filter>
+    </FxCompile>
+    <FxCompile Include="Content\SampleVertexShader.hlsl">
+      <Filter>Content</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>
