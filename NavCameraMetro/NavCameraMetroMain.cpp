@@ -1,14 +1,14 @@
 ﻿#include "pch.h"
-#include "App1Main.h"
+#include "NavCameraMetroMain.h"
 #include "Common\DirectXHelper.h"
 
-using namespace App1;
+using namespace NavCameraMetro;
 using namespace Windows::Foundation;
 using namespace Windows::System::Threading;
 using namespace Concurrency;
 
 // Loads and initializes application assets when the application is loaded.
-App1Main::App1Main(const std::shared_ptr<DX::DeviceResources>& deviceResources) :
+NavCameraMetroMain::NavCameraMetroMain(const std::shared_ptr<DX::DeviceResources>& deviceResources) :
 	m_deviceResources(deviceResources), m_pointerLocationX(0.0f)
 {
 	// Register to be notified if the Device is lost or recreated
@@ -27,20 +27,20 @@ App1Main::App1Main(const std::shared_ptr<DX::DeviceResources>& deviceResources) 
 	*/
 }
 
-App1Main::~App1Main()
+NavCameraMetroMain::~NavCameraMetroMain()
 {
 	// Deregister device notification
 	m_deviceResources->RegisterDeviceNotify(nullptr);
 }
 
 // Updates application state when the window size changes (e.g. device orientation change)
-void App1Main::CreateWindowSizeDependentResources() 
+void NavCameraMetroMain::CreateWindowSizeDependentResources()
 {
 	// TODO: Replace this with the size-dependent initialization of your app's content.
 	m_sceneRenderer->CreateWindowSizeDependentResources();
 }
 
-void App1Main::StartRenderLoop()
+void NavCameraMetroMain::StartRenderLoop()
 {
 	// If the animation render loop is already running then do not start another thread.
 	if (m_renderLoopWorker != nullptr && m_renderLoopWorker->Status == AsyncStatus::Started)
@@ -67,13 +67,13 @@ void App1Main::StartRenderLoop()
 	m_renderLoopWorker = ThreadPool::RunAsync(workItemHandler, WorkItemPriority::High, WorkItemOptions::TimeSliced);
 }
 
-void App1Main::StopRenderLoop()
+void NavCameraMetroMain::StopRenderLoop()
 {
 	m_renderLoopWorker->Cancel();
 }
 
 // Updates the application state once per frame.
-void App1Main::Update() 
+void NavCameraMetroMain::Update()
 {
 	ProcessInput();
 
@@ -87,7 +87,7 @@ void App1Main::Update()
 }
 
 // Process all input from the user before updating game state
-void App1Main::ProcessInput()
+void NavCameraMetroMain::ProcessInput()
 {
 	// TODO: Add per frame input handling here.
 	m_sceneRenderer->TrackingUpdate(m_pointerLocationX);
@@ -95,7 +95,7 @@ void App1Main::ProcessInput()
 
 // Renders the current frame according to the current application state.
 // Returns true if the frame was rendered and is ready to be displayed.
-bool App1Main::Render() 
+bool NavCameraMetroMain::Render()
 {
 	// Don't try to render anything before the first Update.
 	if (m_timer.GetFrameCount() == 0)
@@ -126,14 +126,14 @@ bool App1Main::Render()
 }
 
 // Notifies renderers that device resources need to be released.
-void App1Main::OnDeviceLost()
+void NavCameraMetroMain::OnDeviceLost()
 {
 	m_sceneRenderer->ReleaseDeviceDependentResources();
 	m_fpsTextRenderer->ReleaseDeviceDependentResources();
 }
 
 // Notifies renderers that device resources may now be recreated.
-void App1Main::OnDeviceRestored()
+void NavCameraMetroMain::OnDeviceRestored()
 {
 	m_sceneRenderer->CreateDeviceDependentResources();
 	m_fpsTextRenderer->CreateDeviceDependentResources();

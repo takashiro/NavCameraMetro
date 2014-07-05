@@ -3,10 +3,10 @@
 
 #include "Common/DirectXHelper.h"
 
-using namespace App1;
+using namespace NavCameraMetro;
 
 // Initializes D2D resources used for text rendering.
-SampleFpsTextRenderer::SampleFpsTextRenderer(const std::shared_ptr<DX::DeviceResources>& deviceResources) : 
+SampleFpsTextRenderer::SampleFpsTextRenderer(const std::shared_ptr<DX::DeviceResources>& deviceResources) :
 	m_text(L""),
 	m_deviceResources(deviceResources)
 {

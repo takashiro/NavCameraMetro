@@ -103,7 +103,7 @@
       <Filter>Content</Filter>
     </ClCompile>
     <ClCompile Include="DirectXPage.xaml.cpp" />
-    <ClCompile Include="App1Main.cpp" />
+    <ClCompile Include="NavCameraMetroMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -137,7 +137,7 @@
       <Filter>Content</Filter>
     </ClInclude>
     <ClInclude Include="DirectXPage.xaml.h" />
-    <ClInclude Include="App1Main.h" />
+    <ClInclude Include="NavCameraMetroMain.h" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest" />

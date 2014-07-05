@@ -7,6 +7,7 @@
 #include "ItemPage.xaml.h"
 #include "MediaPage.xaml.h"
 #include "F3DPage.xaml.h"
+#include "DirectXPage.xaml.h"
 
 using namespace NavCameraMetro;
 
@@ -122,7 +123,7 @@ void ItemPage::AppBarMediaButton_Click(Platform::Object^ sender, Windows::UI::Xa
 
 void NavCameraMetro::ItemPage::AppBar3DModelButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
-	Frame->Navigate(TypeName(F3DPage::typeid));
+	Frame->Navigate(TypeName(DirectXPage::typeid));
 }
 
 void NavCameraMetro::ItemPage::HotspotButton_PointerEntered(Platform::Object^ sender, Windows::UI::Xaml::Input::PointerRoutedEventArgs^ e)

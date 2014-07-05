@@ -157,7 +157,7 @@
     <ClInclude Include="ActivityPage.xaml.h">
       <DependentUpon>ActivityPage.xaml</DependentUpon>
     </ClInclude>
-    <ClInclude Include="App1Main.h" />
+    <ClInclude Include="NavCameraMetroMain.h" />
     <ClInclude Include="Common\DeviceResources.h" />
     <ClInclude Include="Common\DirectXHelper.h" />
     <ClInclude Include="Common\StepTimer.h" />
@@ -359,7 +359,7 @@
     <ClCompile Include="App.xaml.cpp">
       <DependentUpon>App.xaml</DependentUpon>
     </ClCompile>
-    <ClCompile Include="App1Main.cpp" />
+    <ClCompile Include="NavCameraMetroMain.cpp" />
     <ClCompile Include="Common\DeviceResources.cpp" />
     <ClCompile Include="Common\NavigationHelper.cpp" />
     <ClCompile Include="Common\RelayCommand.cpp" />

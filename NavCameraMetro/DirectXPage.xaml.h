@@ -8,9 +8,9 @@
 #include "DirectXPage.g.h"
 
 #include "Common\DeviceResources.h"
-#include "App1Main.h"
+#include "NavCameraMetroMain.h"
 
-namespace App1
+namespace NavCameraMetro
 {
 	/// <summary>
 	/// A page that hosts a DirectX SwapChainPanel.
@@ -52,7 +52,7 @@ namespace App1
 
 		// Resources used to render the DirectX content in the XAML page background.
 		std::shared_ptr<DX::DeviceResources> m_deviceResources;
-		std::unique_ptr<App1Main> m_main; 
+		std::unique_ptr<NavCameraMetroMain> m_main;
 		bool m_windowVisible;
 	};
 }

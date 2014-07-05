@@ -6,7 +6,7 @@
 #include "pch.h"
 #include "DirectXPage.xaml.h"
 
-using namespace App1;
+using namespace NavCameraMetro;
 
 using namespace Platform;
 using namespace Windows::Foundation;
@@ -47,7 +47,7 @@ DirectXPage::DirectXPage():
 	DisplayInformation::DisplayContentsInvalidated +=
 		ref new TypedEventHandler<DisplayInformation^, Object^>(this, &DirectXPage::OnDisplayContentsInvalidated);
 
-	swapChainPanel->CompositionScaleChanged += 
+	swapChainPanel->CompositionScaleChanged +=
 		ref new TypedEventHandler<SwapChainPanel^, Object^>(this, &DirectXPage::OnCompositionScaleChanged);
 
 	swapChainPanel->SizeChanged +=
@@ -55,10 +55,10 @@ DirectXPage::DirectXPage():
 
 	// Disable all pointer visual feedback for better performance when touching.
 	auto pointerVisualizationSettings = PointerVisualizationSettings::GetForCurrentView();
-	pointerVisualizationSettings->IsContactFeedbackEnabled = false; 
+	pointerVisualizationSettings->IsContactFeedbackEnabled = false;
 	pointerVisualizationSettings->IsBarrelButtonFeedbackEnabled = false;
 
-	// At this point we have access to the device. 
+	// At this point we have access to the device.
 	// We can create the device-dependent resources.
 	m_deviceResources = std::make_shared<DX::DeviceResources>();
 	m_deviceResources->SetSwapChainPanel(swapChainPanel);
@@ -85,7 +85,7 @@ DirectXPage::DirectXPage():
 	// Run task on a dedicated high priority background thread.
 	m_inputLoopWorker = ThreadPool::RunAsync(workItemHandler, WorkItemPriority::High, WorkItemOptions::TimeSliced);
 
-	m_main = std::unique_ptr<App1Main>(new App1Main(m_deviceResources));
+	m_main = std::unique_ptr<NavCameraMetroMain>(new NavCameraMetroMain(m_deviceResources));
 	m_main->StartRenderLoop();
 }
 
@@ -158,7 +158,7 @@ void DirectXPage::OnDisplayContentsInvalidated(DisplayInformation^ sender, Objec
 // Called when the app bar button is clicked.
 void DirectXPage::AppBarButton_Click(Object^ sender, RoutedEventArgs^ e)
 {
-	// Use the app bar if it is appropriate for your app. Design the app bar, 
+	// Use the app bar if it is appropriate for your app. Design the app bar,
 	// then fill in event handlers (like this one).
 }
 

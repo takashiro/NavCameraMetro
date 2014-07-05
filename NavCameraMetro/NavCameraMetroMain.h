@@ -6,13 +6,13 @@
 #include "Content\SampleFpsTextRenderer.h"
 
 // Renders Direct2D and 3D content on the screen.
-namespace App1
+namespace NavCameraMetro
 {
-	class App1Main : public DX::IDeviceNotify
+	class NavCameraMetroMain : public DX::IDeviceNotify
 	{
 	public:
-		App1Main(const std::shared_ptr<DX::DeviceResources>& deviceResources);
-		~App1Main();
+		NavCameraMetroMain(const std::shared_ptr<DX::DeviceResources>& deviceResources);
+		~NavCameraMetroMain();
 		void CreateWindowSizeDependentResources();
 		void StartTracking() { m_sceneRenderer->StartTracking(); }
 		void TrackingUpdate(float positionX) { m_pointerLocationX = positionX; }
