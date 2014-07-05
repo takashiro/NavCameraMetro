@@ -112,6 +112,11 @@ void ItemPage::LoadState(Object^ sender, Common::LoadStateEventArgs^ e)
 	.then([this](Data::DefaultDataItem^ item)
 	{
 		DefaultViewModel->Insert("Item", item);
+
+		if (item->ModelType == 0)
+		{
+			ModelButton->IsEnabled = false;
+		}
 	}, task_continuation_context::use_current());
 }
 
