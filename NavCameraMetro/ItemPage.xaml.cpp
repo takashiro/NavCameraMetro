@@ -123,7 +123,15 @@ void ItemPage::AppBarMediaButton_Click(Platform::Object^ sender, Windows::UI::Xa
 
 void NavCameraMetro::ItemPage::AppBar3DModelButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
-	Frame->Navigate(TypeName(DirectXPage::typeid));
+	auto item = safe_cast<Data::DefaultDataItem^>(DefaultViewModel->Lookup("Item"));
+	if (item->ModelType == 1)
+	{
+		Frame->Navigate(TypeName(DirectXPage::typeid));
+	}
+	else if (item->ModelType == 2)
+	{
+		Frame->Navigate(TypeName(F3DPage::typeid));
+	}
 }
 
 void NavCameraMetro::ItemPage::HotspotButton_PointerEntered(Platform::Object^ sender, Windows::UI::Xaml::Input::PointerRoutedEventArgs^ e)

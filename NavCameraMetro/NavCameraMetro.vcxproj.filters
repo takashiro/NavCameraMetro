@@ -89,9 +89,6 @@
     <ClCompile Include="ActivityPage.xaml.cpp" />
     <ClCompile Include="NavigatorPage.xaml.cpp" />
     <ClCompile Include="MediaPage.xaml.cpp" />
-    <ClCompile Include="DataModel\DefaultSource.cpp">
-      <Filter>DataModel</Filter>
-    </ClCompile>
     <ClCompile Include="F3DPage.xaml.cpp" />
     <ClCompile Include="Common\DeviceResources.cpp">
       <Filter>Common</Filter>
@@ -104,6 +101,9 @@
     </ClCompile>
     <ClCompile Include="DirectXPage.xaml.cpp" />
     <ClCompile Include="NavCameraMetroMain.cpp" />
+    <ClCompile Include="DataModel\DefaultDataSource.cpp">
+      <Filter>DataModel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

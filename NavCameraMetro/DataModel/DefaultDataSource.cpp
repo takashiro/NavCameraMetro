@@ -96,7 +96,9 @@ DefaultDataItem::DefaultDataItem(String^ uniqueId, String^ title, String^ subtit
 	_description(description),
 	_imagePath(imagePath),
 	_content(content),
-	_hotspots(ref new Vector<DefaultDataHotspot^>())
+	_hotspots(ref new Vector<DefaultDataHotspot^>()),
+	_modelType(0),
+	_modelPath(nullptr)
 {
 }
 
@@ -133,6 +135,26 @@ String^ DefaultDataItem::ImagePath::get()
 IObservableVector<DefaultDataHotspot^>^ DefaultDataItem::Hotspots::get()
 {
 	return _hotspots;
+}
+
+int DefaultDataItem::ModelType::get()
+{
+	return _modelType;
+}
+
+void DefaultDataItem::ModelType::set(int type)
+{
+	_modelType = type;
+}
+
+String^ DefaultDataItem::ModelPath::get()
+{
+	return _modelPath;
+}
+
+void DefaultDataItem::ModelPath::set(Platform::String^ path)
+{
+	_modelPath = path;
 }
 
 Windows::UI::Xaml::Data::ICustomProperty^ DefaultDataItem::GetCustomProperty(Platform::String^ name)
@@ -257,7 +279,14 @@ DefaultDataSource::DefaultDataSource()
 					itemObject->GetNamedString("Subtitle"),
 					itemObject->GetNamedString("ImagePath"),
 					itemObject->GetNamedString("Description"),
-					itemObject->GetNamedString("Content"));
+					itemObject->GetNamedString("Content")
+				);
+
+				if (itemObject->HasKey("ModelType"))
+				{
+					item->ModelType = (int)itemObject->GetNamedNumber("ModelType");
+					item->ModelPath = itemObject->GetNamedString("ModelPath");
+				}
 
 				if (itemObject->HasKey("Hotspots"))
 				{
