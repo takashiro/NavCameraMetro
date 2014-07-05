@@ -315,16 +315,42 @@
     <Image Include="Assets\heritage\lyingbudda.jpg" />
     <Image Include="Assets\heritage\painting.jpg" />
     <Image Include="Assets\heritage\tower.jpg" />
-    <Image Include="Assets\Logo.scale-100.png" />
+    <Image Include="Assets\Logo.scale-180.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
     <Image Include="Assets\ruin\egypt.jpg" />
     <Image Include="Assets\ruin\fuzihole.jpg" />
     <Image Include="Assets\ruin\majiabang.jpg" />
-    <Image Include="Assets\SmallLogo.scale-100.png" />
-    <Image Include="Assets\StoreLogo.scale-100.png" />
-    <Image Include="Assets\SplashScreen.scale-100.png" />
+    <Image Include="Assets\SmallLogo.scale-100.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\SplashScreen.scale-180.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Square30x30Logo.scale-180.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Square310x310Logo.scale-180.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\SquareLogo.scale-180.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\StoreLogo.scale-100.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\SplashScreen.scale-100.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
     <Image Include="Assets\LightGray.png" />
     <Image Include="Assets\MediumGray.png" />
     <Image Include="Assets\DarkGray.png" />
+    <Image Include="Assets\StoreLogo.scale-180.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Wide310x150Logo.scale-180.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ActivityPage.xaml.cpp">
