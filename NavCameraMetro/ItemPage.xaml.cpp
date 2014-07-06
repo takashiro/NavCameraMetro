@@ -26,6 +26,12 @@ using namespace Windows::UI::Xaml::Input;
 using namespace Windows::UI::Xaml::Interop;
 using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Navigation;
+using namespace Windows::UI::Xaml::Media::Imaging;
+using namespace Windows::System::UserProfile;
+using namespace Windows::Storage;
+using namespace Windows::Storage::Streams;
+using namespace Microsoft::WRL;
+using namespace Microsoft::WRL::Wrappers;
 
 // The Item Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234232
 
@@ -118,6 +124,34 @@ void ItemPage::LoadState(Object^ sender, Common::LoadStateEventArgs^ e)
 			ModelButton->IsEnabled = false;
 		}
 	}, task_continuation_context::use_current());
+
+	DefaultViewModel->Insert("UserDisplayName", "Anonymous");
+	if (UserInformation::NameAccessAllowed)
+	{
+		create_task(UserInformation::GetDisplayNameAsync()).then([this](String^ displayName)
+		{
+			if (displayName != nullptr)
+			{
+				DefaultViewModel->Insert("UserDisplayName", displayName);
+			}
+		});
+
+		auto smallImageFile = UserInformation::GetAccountPicture(AccountPictureKind::SmallImage);
+		create_task(smallImageFile->OpenReadAsync()).then([this](task<IRandomAccessStreamWithContentType^> imageStreamTask)
+		{
+			try
+			{
+				auto imageStream = imageStreamTask.get();
+				auto bitmapImage = ref new BitmapImage;
+				bitmapImage->SetSource(imageStream);
+				DefaultViewModel->Insert("UserAvatar", bitmapImage);
+			}
+			catch (Exception^ Ex)
+			{
+				//rootPage->NotifyUser("No large account picture image returned for current user.", NotifyType::ErrorMessage);
+			}
+		});
+	}
 }
 
 void ItemPage::AppBarMediaButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs e)
@@ -168,12 +202,31 @@ void NavCameraMetro::ItemPage::ClearButton_Click(Platform::Object^ sender, Windo
 
 void NavCameraMetro::ItemPage::CommentButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
-	TextBlock ^block = ref new TextBlock;
-	block->Width = 400;
-	block->Height = 100;
-	block->FontSize = 26;
-	block->TextWrapping = TextWrapping::Wrap;
-	block->Text = commentEdit->Text;
-	commentList->Items->InsertAt(0, block);
+	TextBlock ^content = ref new TextBlock;
+	content->FontSize = 26;
+	content->Width = 400;
+	content->Padding = 10;
+	content->TextWrapping = TextWrapping::Wrap;
+	content->Text = commentEdit->Text;
+	
+	TextBlock ^name = ref new TextBlock;
+	name->Text = safe_cast<String ^>(DefaultViewModel->Lookup("UserDisplayName"));
+	name->HorizontalAlignment = Windows::UI::Xaml::HorizontalAlignment::Center;
+
+	Image ^avatar = ref new Image;
+	avatar->Source = safe_cast<BitmapImage ^>(DefaultViewModel->Lookup("UserAvatar"));
+
+	StackPanel ^profile = ref new StackPanel;
+	profile->Children->Append(avatar);
+	profile->Children->Append(name);
+
+	StackPanel ^comment = ref new StackPanel;
+	comment->Height = 120;
+	comment->Orientation = Orientation::Horizontal;
+	comment->Children->Append(profile);
+	comment->Children->Append(content);
+	
+	commentList->Items->InsertAt(0, comment);
+	
 	commentEdit->Text = "";
 }

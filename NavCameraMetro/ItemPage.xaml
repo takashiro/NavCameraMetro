@@ -67,13 +67,13 @@
                 </Canvas>
                 <StackPanel Margin="10">
                     <TextBlock TextWrapping="Wrap" Text="{Binding Description}" FontSize="26" Width="500" Margin="0,0,0,50"/>
-                    <TextBox x:Name="commentEdit" TextWrapping="Wrap" PlaceholderText="Something to say?" FontSize="26" Width="500" Height="200"/>
+                    <TextBox x:Name="commentEdit" TextWrapping="Wrap" PlaceholderText="Something to say?" FontSize="26" Width="500" Height="200" MaxLength="60"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                         <Button Content="Comment" Width="120" Height="60" Click="CommentButton_Click"/>
                         <Button Content="Clear" Width="120" Height="60" Click="ClearButton_Click"/>
                     </StackPanel>
                 </StackPanel>
-                <GridView x:Name="commentList" SelectionMode="None"></GridView>
+                <GridView x:Name="commentList" SelectionMode="None" Margin="30,10,10,10"></GridView>
             </StackPanel>
         </ScrollViewer>
 
