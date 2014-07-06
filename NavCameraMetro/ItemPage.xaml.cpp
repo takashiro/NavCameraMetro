@@ -9,6 +9,8 @@
 #include "F3DPage.xaml.h"
 #include "DirectXPage.xaml.h"
 
+#include <sstream>
+
 using namespace NavCameraMetro;
 
 using namespace Platform;
@@ -202,12 +204,19 @@ void NavCameraMetro::ItemPage::ClearButton_Click(Platform::Object^ sender, Windo
 
 void NavCameraMetro::ItemPage::CommentButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
+	std::wstringstream ss;
+	ss << commentEdit->Text->Data();
+	std::wstring str;
+	ss >> str;
+	if (str.empty())
+		return;
+
 	TextBlock ^content = ref new TextBlock;
 	content->FontSize = 26;
 	content->Width = 400;
 	content->Padding = 10;
 	content->TextWrapping = TextWrapping::Wrap;
-	content->Text = commentEdit->Text;
+	content->Text = ref new String(str.data());
 	
 	TextBlock ^name = ref new TextBlock;
 	name->Text = safe_cast<String ^>(DefaultViewModel->Lookup("UserDisplayName"));
