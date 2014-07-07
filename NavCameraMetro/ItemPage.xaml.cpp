@@ -5,7 +5,6 @@
 
 #include "pch.h"
 #include "ItemPage.xaml.h"
-#include "MediaPage.xaml.h"
 #include "F3DPage.xaml.h"
 #include "DirectXPage.xaml.h"
 
@@ -125,6 +124,11 @@ void ItemPage::LoadState(Object^ sender, Common::LoadStateEventArgs^ e)
 		{
 			ModelButton->IsEnabled = false;
 		}
+
+		if (item->MediaPath == nullptr || item->MediaPath->IsEmpty())
+		{
+			MediaButton->IsEnabled = false;
+		}
 	}, task_continuation_context::use_current());
 
 	DefaultViewModel->Insert("UserDisplayName", "Anonymous");
@@ -158,8 +162,17 @@ void ItemPage::LoadState(Object^ sender, Common::LoadStateEventArgs^ e)
 
 void ItemPage::AppBarMediaButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs e)
 {
-	// TODO: transfer item id to the media page
-	Frame->Navigate(TypeName(MediaPage::typeid));
+	auto item = safe_cast<Data::DefaultDataItem^>(DefaultViewModel->Lookup("Item"));
+
+	if (item->MediaPath != nullptr && !item->MediaPath->IsEmpty())
+	{
+		// Set the option to show the picker
+		auto launchOptions = ref new Windows::System::LauncherOptions;
+		launchOptions->DisplayApplicationPicker = true;
+
+		// Launch the retrieved file
+		concurrency::task<bool>(Windows::System::Launcher::LaunchUriAsync(ref new Uri(item->MediaPath), launchOptions));
+	}
 }
 
 void NavCameraMetro::ItemPage::AppBar3DModelButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)

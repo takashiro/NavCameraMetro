@@ -98,7 +98,8 @@ DefaultDataItem::DefaultDataItem(String^ uniqueId, String^ title, String^ subtit
 	_content(content),
 	_hotspots(ref new Vector<DefaultDataHotspot^>()),
 	_modelType(0),
-	_modelPath(nullptr)
+	_modelPath(nullptr),
+	_mediaPath(nullptr)
 {
 }
 
@@ -155,6 +156,16 @@ String^ DefaultDataItem::ModelPath::get()
 void DefaultDataItem::ModelPath::set(Platform::String^ path)
 {
 	_modelPath = path;
+}
+
+String^ DefaultDataItem::MediaPath::get()
+{
+	return _mediaPath;
+}
+
+void DefaultDataItem::MediaPath::set(Platform::String ^path)
+{
+	_mediaPath = path;
 }
 
 Windows::UI::Xaml::Data::ICustomProperty^ DefaultDataItem::GetCustomProperty(Platform::String^ name)
@@ -286,6 +297,11 @@ DefaultDataSource::DefaultDataSource()
 				{
 					item->ModelType = (int)itemObject->GetNamedNumber("ModelType");
 					item->ModelPath = itemObject->GetNamedString("ModelPath");
+				}
+
+				if (itemObject->HasKey("MediaPath"))
+				{
+					item->MediaPath = itemObject->GetNamedString("MediaPath");
 				}
 
 				if (itemObject->HasKey("Hotspots"))

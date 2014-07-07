@@ -70,6 +70,7 @@ namespace NavCameraMetro
 			}
 			property int ModelType { int get(); void set(int type); }
 			property Platform::String ^ModelPath { Platform::String^ get(); void set(Platform::String^ path); }
+			property Platform::String ^MediaPath { Platform::String^ get(); void set(Platform::String^ path); }
 
 			// Implementation of ICustomPropertyProvider provides a string representation for the object to be used as automation name for accessibility
 			virtual Windows::UI::Xaml::Data::ICustomProperty^ GetCustomProperty(Platform::String^ name);
@@ -91,6 +92,7 @@ namespace NavCameraMetro
 			Platform::Collections::Vector<DefaultDataHotspot^>^ _hotspots;
 			int _modelType;
 			Platform::String^ _modelPath;
+			Platform::String^ _mediaPath;
 		};
 
 		/// <summary>

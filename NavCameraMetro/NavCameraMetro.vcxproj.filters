@@ -154,7 +154,6 @@
     <Page Include="ItemPage.xaml" />
     <Page Include="ActivityPage.xaml" />
     <Page Include="NavigatorPage.xaml" />
-    <Page Include="MediaPage.xaml" />
     <Page Include="F3DPage.xaml" />
     <Page Include="DirectXPage.xaml" />
   </ItemGroup>
