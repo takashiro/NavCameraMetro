@@ -41,29 +41,12 @@
 
         <ScrollViewer Grid.Row="1" x:Name="contentRegion" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
             <StackPanel Orientation="Horizontal">
-                <Canvas Width="700"
-            		Margin="10,10,10,40">
+                <Canvas x:Name="HotspotList"
+                        Width="700"
+            		    Margin="10,10,10,40">
                     <Canvas.Background>
                         <ImageBrush Stretch="Fill" ImageSource="{Binding ImagePath}"/>
                     </Canvas.Background>
-                    <ItemsControl ItemsSource="{Binding Hotspots}">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Button Content="{Binding Label}"
-                                        VerticalAlignment="Top"
-                                        HorizontalAlignment="Left"
-                                        Width="{Binding Width}" 
-                                        Height="{Binding Height}"
-                                        Canvas.Top="{Binding Top}"
-                                        Canvas.Left="{Binding Left}"
-                                        Opacity="0"
-                                        PointerEntered="HotspotButton_PointerEntered"
-                                        PointerExited="HotspotButton_PointerExited"
-                                        CommandParameter="{Binding LinkedItemId}"
-                                        Click="HotspotButton_Click"/>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
                 </Canvas>
                 <StackPanel Margin="10">
                     <TextBlock TextWrapping="Wrap" Text="{Binding Description}" FontSize="26" Width="500" Margin="0,0,0,50"/>

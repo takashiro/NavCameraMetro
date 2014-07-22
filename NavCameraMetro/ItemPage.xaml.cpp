@@ -129,6 +129,30 @@ void ItemPage::LoadState(Object^ sender, Common::LoadStateEventArgs^ e)
 		{
 			MediaButton->IsEnabled = false;
 		}
+
+		auto hotspots = item->Hotspots;
+		for (unsigned i = 0; i < hotspots->Size; i++)
+		{
+			Button ^button = ref new Button;
+			auto hotspot = hotspots->GetAt(i);
+
+			button->Content = hotspot->Label;
+			button->Width = hotspot->Width;
+			button->Height = hotspot->Height;
+			button->Opacity = 0;
+			button->VerticalAlignment = ::VerticalAlignment::Top;
+			button->HorizontalAlignment = ::HorizontalAlignment::Left;
+			button->CommandParameter = hotspot->LinkedItemId;
+			Canvas::SetTop(button, hotspot->Top);
+			Canvas::SetLeft(button, hotspot->Left);
+
+			button->Click += ref new RoutedEventHandler(this, &ItemPage::HotspotButton_Click);
+			button->PointerEntered += ref new PointerEventHandler(this, &ItemPage::HotspotButton_PointerEntered);
+			button->PointerExited += ref new PointerEventHandler(this, &ItemPage::HotspotButton_PointerExited);
+
+			HotspotList->Children->Append(button);
+		}
+
 	}, task_continuation_context::use_current());
 
 	DefaultViewModel->Insert("UserDisplayName", "Anonymous");
@@ -201,13 +225,11 @@ void NavCameraMetro::ItemPage::HotspotButton_PointerExited(Platform::Object^ sen
 	button->Opacity = 0;
 }
 
-
 void NavCameraMetro::ItemPage::HotspotButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
 	Button ^button = safe_cast<Button ^>(sender);
 	Frame->Navigate(TypeName(ItemPage::typeid), button->CommandParameter);
 }
-
 
 void NavCameraMetro::ItemPage::ClearButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
