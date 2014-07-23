@@ -24,7 +24,25 @@ namespace NavCameraMetro
 		void SaveInternalState(Windows::Foundation::Collections::IPropertySet^ state);
 		void LoadInternalState(Windows::Foundation::Collections::IPropertySet^ state);
 
+		/// <summary>
+		/// NavigationHelper is used on each page to aid in navigation and 
+		/// process lifetime management
+		/// </summary>
+		property Common::NavigationHelper^ NavigationHelper
+		{
+			Common::NavigationHelper^ get();
+		}
+
+	protected:
+		virtual void OnNavigatedTo(Windows::UI::Xaml::Navigation::NavigationEventArgs^ e) override;
+		virtual void OnNavigatedFrom(Windows::UI::Xaml::Navigation::NavigationEventArgs^ e) override;
+
 	private:
+
+		static Windows::UI::Xaml::DependencyProperty^ _navigationHelperProperty;
+
+		void LoadState(Platform::Object^ sender, Common::LoadStateEventArgs^ e);
+
 		// XAML low-level rendering event handler.
 		void OnRendering(Platform::Object^ sender, Platform::Object^ args);
 
