@@ -17,18 +17,34 @@
 		"Hotspots" : [
 		  {
 		    "Label" : "TEST1",
-			"Width" : 200,
-			"Height" : 200,
-			"Top" : 300,
-			"Left" : 400,
+			"Width" : 120,
+			"Height" : 120,
+			"Top" : 390,
+			"Left" : 240,
+			"LinkedItemId" : "Group-Ruin-Item-1"
+		  },
+		  {
+		    "Label" : "TEST1",
+			"Width" : 120,
+			"Height" : 120,
+			"Top" : 385,
+			"Left" : 395,
+			"LinkedItemId" : "Group-Ruin-Item-2"
+		  },
+		  {
+		    "Label" : "TEST2",
+			"Width" : 90,
+			"Height" : 140,
+			"Top" : 370,
+			"Left" : 130,
 			"LinkedItemId" : "Group-Ruin-Item-1"
 		  },
 		  {
 		    "Label" : "TEST2",
-			"Width" : 100,
-			"Height" : 100,
-			"Top" : 200,
-			"Left" : 200,
+			"Width" : 110,
+			"Height" : 130,
+			"Top" : 385,
+			"Left" : 535,
 			"LinkedItemId" : "Group-Ruin-Item-2"
 		  }
 		],
