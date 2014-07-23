@@ -9,7 +9,7 @@
     [
       {
         "UniqueId": "Group-Carve-Item-220-1",
-        "Title": "North Wall of Hole 220",
+        "Title": "North Wall of Cave 220",
         "Subtitle": "Item Subtitle: 1",
         "ImagePath": "Assets/carve/graph220_north.jpg",
         "Description" : "This is the north wall of hole 220 in Mogao Caves.",
@@ -54,7 +54,7 @@
 	  },
 	  {
         "UniqueId": "Group-Carve-Item-220-2",
-        "Title": "South Wall of Hole 220",
+        "Title": "South Wall of Cave 220",
         "Subtitle": "Item Subtitle: 1",
         "ImagePath": "Assets/carve/graph220_south.jpg",
         "Description" : "This is the north wall of hole 220 in Mogao Caves.",
@@ -66,7 +66,7 @@
 	  },
 	  {
         "UniqueId": "Group-Carve-Item-220-3",
-        "Title": "West Wall of Hole 220",
+        "Title": "West Wall of Cave 220",
         "Subtitle": "Item Subtitle: 1",
         "ImagePath": "Assets/carve/graph220_west.jpg",
         "Description" : "This is the west wall of hole 220 in Mogao Caves.",
