@@ -88,7 +88,6 @@
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="ActivityPage.xaml.cpp" />
     <ClCompile Include="NavigatorPage.xaml.cpp" />
-    <ClCompile Include="MediaPage.xaml.cpp" />
     <ClCompile Include="F3DPage.xaml.cpp" />
     <ClCompile Include="Common\DeviceResources.cpp">
       <Filter>Common</Filter>
@@ -113,7 +112,6 @@
     <ClInclude Include="ItemPage.xaml.h" />
     <ClInclude Include="ActivityPage.xaml.h" />
     <ClInclude Include="NavigatorPage.xaml.h" />
-    <ClInclude Include="MediaPage.xaml.h" />
     <ClInclude Include="DataModel\DefaultDataSource.h">
       <Filter>DataModel</Filter>
     </ClInclude>
@@ -424,6 +422,15 @@
     </Image>
     <Image Include="Assets\StoreLogo.scale-180.png">
       <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\carve\graph220_north.jpg">
+      <Filter>Assets\carve</Filter>
+    </Image>
+    <Image Include="Assets\carve\graph220_south.jpg">
+      <Filter>Assets\carve</Filter>
+    </Image>
+    <Image Include="Assets\carve\graph220_west.jpg">
+      <Filter>Assets\carve</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

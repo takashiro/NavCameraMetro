@@ -234,6 +234,9 @@
     <Image Include="Assets\carve\2.jpg" />
     <Image Include="Assets\carve\3.jpg" />
     <Image Include="Assets\carve\4.jpg" />
+    <Image Include="Assets\carve\graph220_north.jpg" />
+    <Image Include="Assets\carve\graph220_south.jpg" />
+    <Image Include="Assets\carve\graph220_west.jpg" />
     <Image Include="Assets\f3d\heritage-item-1\1.jpg" />
     <Image Include="Assets\f3d\heritage-item-1\10.jpg" />
     <Image Include="Assets\f3d\heritage-item-1\11.jpg" />
